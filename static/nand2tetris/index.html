@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <title>The 80/20 Computer Science Degree — Rico Meinl</title>
+
+  <link rel="stylesheet" type="text/css" href="./../assets/css/main.css?v=198ed57e30" />
+
+  <link rel="icon" href="./../favicon.png" type="image/png" />
+    <link rel="canonical" href="https://rmeinl.com/ghost/nand2tetris/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="https://rmeinl.com/ghost/nand2tetris/amp/" />
+    
+    <meta property="og:site_name" content="Rico Meinl" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="The 80/20 Computer Science Degree" />
+    <meta property="og:description" content="Nand to Tetris was created by two CS professors, Noam Nisan and Shimon Schocken. In a nutshell, you&#x27;ll build your own computer in a bottom-up fashion all the way up from NAND gates." />
+    <meta property="og:url" content="https://rmeinl.com/ghost/nand2tetris/" />
+    <meta property="og:image" content="https://rmeinl.com/ghost/content/images/2021/01/compass_cover.png" />
+    <meta property="article:published_time" content="2021-03-30T22:12:56.000Z" />
+    <meta property="article:modified_time" content="2021-04-25T14:07:03.000Z" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="The 80/20 Computer Science Degree" />
+    <meta name="twitter:description" content="Nand to Tetris was created by two CS professors, Noam Nisan and Shimon Schocken. In a nutshell, you&#x27;ll build your own computer in a bottom-up fashion all the way up from NAND gates." />
+    <meta name="twitter:url" content="https://rmeinl.com/ghost/nand2tetris/" />
+    <meta name="twitter:image" content="https://rmeinl.com/ghost/content/images/2021/01/compass_cover.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Rico Meinl" />
+    <meta name="twitter:site" content="@rmeinl" />
+    <meta name="twitter:creator" content="@rmeinl" />
+    <meta property="og:image:width" content="1640" />
+    <meta property="og:image:height" content="624" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Rico Meinl",
+        "url": "https://rmeinl.com/ghost/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://rmeinl.com/ghost/favicon.png",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Rico Meinl",
+        "url": "https://rmeinl.com/ghost/author/rico/",
+        "sameAs": [
+            "https://rmeinl.com",
+            "https://twitter.com/rmeinl"
+        ]
+    },
+    "headline": "The 80/20 Computer Science Degree",
+    "url": "https://rmeinl.com/ghost/nand2tetris/",
+    "datePublished": "2021-03-30T22:12:56.000Z",
+    "dateModified": "2021-04-25T14:07:03.000Z",
+    "description": "Nand to Tetris was created by two CS professors, Noam Nisan and Shimon Schocken. In a nutshell, you&#x27;ll build your own computer in a bottom-up fashion all the way up from NAND gates. ",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://rmeinl.com/ghost/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 4.3" />
+    <link rel="alternate" type="application/rss+xml" title="Rico Meinl" href="https://rmeinl.com/ghost/rss/" />
+    <script defer src="https://unpkg.com/@tryghost/portal@~1.1.0/umd/portal.min.js" data-ghost="https://rmeinl.com/ghost/"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
+.gh-post-upgrade-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.gh-post-upgrade-cta-content {
+    border-radius: 8px;
+    padding: 40px 4vw;
+}
+
+.gh-post-upgrade-cta h2 {
+    color: #ffffff;
+    font-size: 28px;
+    letter-spacing: -0.2px;
+    margin: 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta p {
+    margin: 20px 0 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta small {
+    font-size: 16px;
+    letter-spacing: -0.2px;
+}
+
+.gh-post-upgrade-cta a {
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a:hover {
+    color: #ffffff;
+    opacity: 0.8;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a.gh-btn {
+    display: block;
+    background: #ffffff;
+    text-decoration: none;
+    margin: 28px 0 0;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.gh-post-upgrade-cta a.gh-btn:hover {
+    opacity: 0.92;
+}</style>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-73VB9DC17E"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-73VB9DC17E');
+</script><style>:root {--ghost-accent-color: #15171A;}</style>
+</head>
+<body class="post-template" id="body">
+
+  
+<header class="main-header" id="main-header">
+
+
+<style type="text/css">
+    .responsive-header-img {
+        background-image: url(./../content/images/size/w1000/2021/01/compass_cover.png);
+    }
+
+    @media(max-width: 1000px) {
+        .responsive-header-img {
+            background-image: url(./../content/images/size/w1000/2021/01/compass_cover.png);
+            background-image: -webkit-image-set(url(./../content/images/size/w1000/2021/01/compass_cover.png));
+            background-image: image-set(url(./../content/images/size/w1000/2021/01/compass_cover.png));
+        }
+    }
+
+    @media(max-width: 600px) {
+        .responsive-header-img {
+            background-image: url(./../content/images/size/w800/2021/01/compass_cover.png);
+            background-image: -webkit-image-set(url(./../content/images/size/w800/2021/01/compass_cover.png));
+            background-image: image-set(url(./../content/images/size/w800/2021/01/compass_cover.png));
+        }
+    }
+</style>
+<div class="outer site-header-background responsive-header-img">
+
+ 
+<div class="container">
+
+
+  <div class="main-header__text-container">
+    <h1 class="main-header__blog-title">
+      <a href="https://rmeinl.com/ghost">Rico Meinl</a>
+    </h1>
+    <h3 class="main-header__blog-description">
+      I&#x27;m interested in biotech, longevity, machine learning and the decentralized web
+    </h3>
+  </div>
+
+  <nav>
+    <ul class="nav">
+    <li class="nav-home"><a href="https://rmeinl.com/ghost/">Home</a></li>
+    <li class="nav-about-me"><a href="https://rmeinl.com/ghost/about-me/">About me</a></li>
+    <li class="nav-recommended"><a href="https://rmeinl.com/ghost/recommended/">Recommended</a></li>
+    <li class="nav-projects"><a href="https://rmeinl.com/ghost/projects/">Projects</a></li>
+</ul>
+
+
+  </nav>
+
+  <div hidden class="notification-area" id="notifications">
+  </div>
+</div>
+</header>
+
+<main class="container content" id="content">
+
+  <article class="post post no-image">
+
+
+      <header class="post__header">
+        <h1 class="post__title">The 80/20 Computer Science Degree</h1>
+
+        <div class="post__meta">
+          Posted by <a href="./../author/rico/">Rico Meinl</a> on
+          <time class="post__date" datetime="2021-03-30">
+            March 30th, 2021.
+          </time>
+
+        </div>
+      </header>
+
+      <section class="post__content">
+            <p>DRAFT/DISCLAIMER — This post is a submission to a competition on <a href="http://1729.com/" rel="noopener noreferrer">1729.com</a>. No prizes will be awarded for any submissions at this time. Learn more at <a href="https://1729.com/decentralized-task-creation" rel="noopener noreferrer">1729.com/decentralized-task-creation</a>. </p><p>Nonetheless, I highly recommend everyone who is interested in CS to take this course.</p><figure class="kg-card kg-image-card"><img src="./..//content/images/2021/03/nand2tetris-1.png" class="kg-image" alt loading="lazy" width="2000" height="1216" srcset="https://rmeinl.com/ghost/content/images/size/w600/2021/03/nand2tetris-1.png 600w, https://rmeinl.com/ghost/content/images/size/w1000/2021/03/nand2tetris-1.png 1000w, https://rmeinl.com/ghost/content/images/size/w1600/2021/03/nand2tetris-1.png 1600w, https://rmeinl.com/ghost/content/images/2021/03/nand2tetris-1.png 2000w" sizes="(min-width: 720px) 720px"></figure><p>Listening to podcasts with people in tech, you'll often hear that they got interested in the field because they built their own computers or coded their own games. Elon, for example, sold his first computer game at the age of 12 and built custom computers for others in university. </p><p>Now, that most people have laptops it becomes harder to just open them up, check what's inside and put it back together. Of course you could buy go and buy all the parts separately or get <a href="https://www.playpiper.com/">a DIY kit</a>. Though this might not be logistically feasible for everyone which is a shame because this kind of tinkering is a great learning vehicle for anything related to Computer Science. </p><p>What if you could virtualize the whole experience while being guided by some world-class CS professors? Enter <a href="https://www.nand2tetris.org/">Nand to Tetris</a>.</p><h2 id="a-game-changer-in-cs-education">A game changer in CS education</h2><p>Nand to Tetris was created by two CS professors, <a href="http://www.cs.huji.ac.il/~noam/" rel="noopener">Noam Nisan</a> and <a href="http://www.shimonschocken.com/" rel="noopener">Shimon Schocken</a>. In a nutshell, you'll build your own computer in a bottom-up fashion all the way up from <a href="https://en.wikipedia.org/wiki/NAND_gate#:~:text=In%20digital%20electronics%2C%20a%20NAND,HIGH%20(1)%20output%20results.">NAND gates</a>. <br>In the process, you'll get a hands-on coverage of most of the important ideas and techniques in applied computer science, focusing on computer architecture, compilation, and software engineering, in one course. Nand to Tetris also provides a hands-on overview of key data structures and algorithms, as they unfold in the context of 12 captivating hardware and software development projects.</p><blockquote>Nand to Tetris courses are now taught at 200+ universities and high schools around the world. The students who take them range from high school students to Ph.D. students to Google engineers.</blockquote><h2 id="task-earn-500-in-btc">Task: Earn $500 in BTC</h2><h3 id="complete-all-12-projects-and-submit-a-link-to-the-github-project-repository">Complete all 12 projects and submit a link to the Github project repository</h3><ol><li><a href="https://drive.google.com/file/d/1MY1buFHo_Wx5DPrKhCNSA2cm5ltwFJzM/view">Boolean Logic</a></li><li><a href="https://b1391bd6-da3d-477d-8c01-38cdf774495a.filesusr.com/ugd/56440f_2e6113c60ec34ed0bc2035c9d1313066.pdf">Boolean Arithmetic</a></li><li><a href="https://b1391bd6-da3d-477d-8c01-38cdf774495a.filesusr.com/ugd/56440f_e458602dcb0c4af9aaeb7fdaa34bb2b4.pdf">Sequential Logic</a></li><li><a href="https://b1391bd6-da3d-477d-8c01-38cdf774495a.filesusr.com/ugd/56440f_12f488fe481344328506857e6a799f79.pdf">Machine Language</a></li><li><a href="https://b1391bd6-da3d-477d-8c01-38cdf774495a.filesusr.com/ugd/56440f_96cbb9c6b8b84760a04c369453b62908.pdf">Computer Architecture</a></li><li><a href="https://b1391bd6-da3d-477d-8c01-38cdf774495a.filesusr.com/ugd/56440f_65a2d8eef0ed4e0ea2471030206269b5.pdf">Assembler</a></li><li><a href="https://drive.google.com/file/d/19fe1PeGnggDHymu4LlVY08KmDdhMVRpm/view">Virtual Machine I: Stack Arithmetic</a></li><li><a href="https://drive.google.com/file/d/1lBsaO5XKLkUgrGY6g6vLMsiZo6rWxlYJ/view">Virtual Machine II: Program Control</a></li><li><a href="https://drive.google.com/file/d/1rbHGZV8AK4UalmdJyivgt0fpPiD1Q6Vk/view">High Level Language</a></li><li><a href="https://drive.google.com/file/d/1ujgcS7GoI-zu56FxhfkTAvEgZ6JT7Dxl/view">Compiler I: Syntax Analysis</a></li><li><a href="https://drive.google.com/file/d/1DfGKr0fuJcCvlIPABNSg7fsLfFFqRLex/view">Compiler II: Code Generation</a></li><li><a href="https://drive.google.com/file/d/137PiYjt4CAZ3ROWiD0DJ8XMUbMM0_VHR/view">Operating System</a></li><li>Tetris</li></ol><p>During these 12 projects you will build your own Assembler, Virtual Machine, Java-like High Level Language, Compiler and Operating System. In the optional 13th project you can tie all these things together to write an implementation of Tetris or any other game of your choice using all the components you previously built.</p><p>There is a guided Coursera course with <a href="https://www.coursera.org/learn/build-a-computer">two</a> <a href="https://www.coursera.org/learn/nand2tetris2">parts</a> but just using the links above or the <a href="https://www.amazon.com/Elements-Computing-Systems-Building-Principles/dp/0262640686/ref=ed_oe_p">book</a> works perfectly fine. <a href="https://www.youtube.com/watch?v=wTl5wRDT0CU">Check out the introduction video here</a>. Some inspirational projects can be found <a href="https://www.nand2tetris.org/copy-of-talks">here</a>.</p><!--kg-card-begin: html--><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfZ4OSXgNF7mvOJt4q65xd-g2SeRNIgPqFSpmHYOLBJVpCSSg/viewform?embedded=true" width="640" height="1451" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe><!--kg-card-end: html-->
+
+      </section>
+
+      <hr>
+
+      <footer class="post__footer">
+
+      
+    <section class="email-optin-widget center-text">
+      <div  style="margin-bottom: 0.5rem;">Like what you see? Get new posts by email:</div>
+
+      <form data-members-form="subscribe">
+        <input data-members-email placeholder="Your email address" type="email" required="true"/>
+        <button type="submit"><span>Subscribe</span></button>
+      </form>
+
+      <!-- <small style="color: grey">
+        or by <a href="https://rmeinl.com/ghost/rss">RSS</a>, if you’re that old-school
+      </small> -->
+
+      <div class="message-success">
+        Great! Check your inbox and click the link to confirm your subscription.
+      </div>
+
+      <div class="message-error">
+        Please enter a valid email address!
+      </div>
+
+      <div data-members-error></div>
+
+      </section>
+
+        <section class="author-info">
+
+    <h4 class="author-info__name">
+      Written by <a href="./../author/rico/">Rico Meinl</a>
+    </h4>
+
+
+
+      <p class="author-info__bio mb0">--- This website is a work in progress. ---
+
+Twitter: @rmeinl
+LinkedIn: https://www.linkedin.com/in/ricomeinl/
+Medium: https://medium.com/@ricomeinl 
+      <!-- this p tag is closed after the location and website info -->
+    <br><br>
+    <span class="author-info__meta">
+
+        <span class="author-info__website">
+          Website:&nbsp;<a href="https://rmeinl.com"><strong>https://rmeinl.com</strong></a>&ensp;
+        </span>
+
+        <span class="author-info__twitter">
+          Twitter&nbsp;handle:&nbsp;<a href="https://twitter.com/rmeinl"><strong>@rmeinl</strong></a>.
+        </span>
+
+    </p> <!-- end bio + meta paragraph -->
+
+  </span> 
+  </section> 
+
+      </footer>
+
+
+
+  </article>
+</main>
+
+
+  <footer class="site-footer">
+
+
+  <small class="site-footer__attribution">
+
+    <span class="site-footer__attribution--copyright">
+      &copy; 2021
+      <a href="https://rmeinl.com/ghost/">Rico Meinl</a>
+    </span>&ensp;
+
+    <span class="site-footer__attribution--theme-author">
+      <a href="https://github.com/curiositry/undefined-ghost-theme">Undefined</a>
+      theme by
+      <a href="http://curiositry.github.io">Curiositry</a>
+    </span>&ensp;
+
+    <span class="site-footer__attribution--ghost">
+      Proudly published with <a href="https://ghost.org">Ghost</a>
+    </span>
+
+  </small>
+
+</footer>
+
+    <script>
+
+    // Code for members notifications
+    // Parse the URL parameter
+    function getParameterByName(name, url) {
+      if (!url) url = window.location.href;
+      name = name.replace(/[\[\]]/g, "\\$&");
+      var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+          results = regex.exec(url);
+      if (!results) return null;
+      if (!results[2]) return '';
+      return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+    // Give the parameter a variable name
+    var action = getParameterByName('action');
+    var stripe = getParameterByName('stripe');
+
+    document.addEventListener("DOMContentLoaded", function(event) {
+
+      // These classes can be used to show success notifications for each action.
+
+      var notifications = document.getElementById("notifications");
+      notifications.onclick = function(e){
+        notifications.hidden = true;
+        notifications.style.display = "none";
+      }
+      if (action == 'subscribe') {
+        document.body.classList.add("subscribe-success");
+        notifications.innerHTML = "You've successfully subscribed to Rico Meinl";
+      }
+      if (action == 'signup') {
+        window.location = 'https://rmeinl.com/ghost/signup/?action=checkout';
+      }
+      if (action == 'checkout') {
+        document.body.classList.add("signup-success");
+        notifications.innerHTML = "Great! Next, complete checkout for full access to Rico Meinl";
+      }
+      if (action == 'signin') {
+        document.body.classList.add("signin-success");
+        notifications.innerHTML = "Welcome back! You've successfully signed in.";
+      }
+      if (stripe == 'success') {
+        document.body.classList.add("checkout-success");
+        notifications.innerHTML = "Success! Your account is fully activated, you now have access to all content.";
+      }
+      if (stripe == 'billing-update-success') {
+        document.body.classList.add("billing-success");
+        notifications.innerHTML = "Success! Your billing info is updated.";
+      }
+      if (stripe == 'billing-update-cancel') {
+        document.body.classList.add("billing-cancel");
+        notifications.innerHTML = "Billing info update failed."
+      }
+      if (action || stripe) {
+        notifications.hidden = false;
+        notifications.style.display = "block";
+        URLSearchParams.delete(action);
+        URLSearchParams.delete(stripe);
+      }
+    });
+    </script>
+
+  
+
+</body>
+</html>
