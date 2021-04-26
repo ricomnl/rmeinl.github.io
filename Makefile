@@ -2,4 +2,4 @@
 
 static:
 	rm -rf static/
-	gssg --url "https://rmeinl.com" --dest static --subDir ghost
+	gssg --url "https://rmeinl.com" --dest static
