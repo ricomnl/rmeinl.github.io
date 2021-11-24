@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Recommender Systems: The Most Valuable Application of Machine Learning (Part 2)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=Raleway:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&display=swap">
+    <link rel="stylesheet" href="/assets/built/screen.css?v=f52c8b2156">
+
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="canonical" href="https://rmeinl.com/blog/recommender-systems-the-most-valuable-application-of-machine-learning-part-2/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="https://rmeinl.com/blog/recommender-systems-the-most-valuable-application-of-machine-learning-part-2/amp/" />
+    
+    <meta property="og:site_name" content="rmeinl" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Recommender Systems: The Most Valuable Application of Machine Learning (Part 2)" />
+    <meta property="og:description" content="Why Recommender Systems are the most valuable application of Machine Learning and how Machine Learning-driven Recommenders already drive almost every aspect of our lives." />
+    <meta property="og:url" content="https://rmeinl.com/blog/recommender-systems-the-most-valuable-application-of-machine-learning-part-2/" />
+    <meta property="og:image" content="https://rmeinl.com/content/images/2021/01/compass_cover.png" />
+    <meta property="article:published_time" content="2020-10-04T20:50:12.000Z" />
+    <meta property="article:modified_time" content="2021-04-25T14:07:49.000Z" />
+    <meta property="article:tag" content="recommender systems" />
+    <meta property="article:tag" content="machine learning" />
+    <meta property="article:tag" content="data science" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Recommender Systems: The Most Valuable Application of Machine Learning (Part 2)" />
+    <meta name="twitter:description" content="Why Recommender Systems are the most valuable application of Machine Learning and how Machine Learning-driven Recommenders already drive almost every aspect of our lives." />
+    <meta name="twitter:url" content="https://rmeinl.com/blog/recommender-systems-the-most-valuable-application-of-machine-learning-part-2/" />
+    <meta name="twitter:image" content="https://rmeinl.com/content/images/2021/01/compass_cover.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Rico Meinl" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="recommender systems, machine learning, data science" />
+    <meta name="twitter:site" content="@rmeinl" />
+    <meta name="twitter:creator" content="@rmeinl" />
+    <meta property="og:image:width" content="1640" />
+    <meta property="og:image:height" content="624" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "rmeinl",
+        "url": "https://rmeinl.com/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://rmeinl.com/favicon.png",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Rico Meinl",
+        "url": "https://rmeinl.com/author/rico/",
+        "sameAs": [
+            "https://rmeinl.com",
+            "https://twitter.com/rmeinl"
+        ]
+    },
+    "headline": "Recommender Systems: The Most Valuable Application of Machine Learning (Part 2)",
+    "url": "https://rmeinl.com/blog/recommender-systems-the-most-valuable-application-of-machine-learning-part-2/",
+    "datePublished": "2020-10-04T20:50:12.000Z",
+    "dateModified": "2021-04-25T14:07:49.000Z",
+    "keywords": "recommender systems, machine learning, data science",
+    "description": "Why Recommender Systems are the most valuable application of Machine Learning and how Machine Learning-driven Recommenders already drive almost every aspect of our lives.",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://rmeinl.com/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 4.22" />
+    <link rel="alternate" type="application/rss+xml" title="rmeinl" href="https://rmeinl.com/blog/rss/" />
+    <script defer src="https://unpkg.com/@tryghost/portal@~1.12.0/umd/portal.min.js" data-ghost="https://rmeinl.com/" crossorigin="anonymous"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
+.gh-post-upgrade-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.gh-post-upgrade-cta-content {
+    border-radius: 8px;
+    padding: 40px 4vw;
+}
+
+.gh-post-upgrade-cta h2 {
+    color: #ffffff;
+    font-size: 28px;
+    letter-spacing: -0.2px;
+    margin: 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta p {
+    margin: 20px 0 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta small {
+    font-size: 16px;
+    letter-spacing: -0.2px;
+}
+
+.gh-post-upgrade-cta a {
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a:hover {
+    color: #ffffff;
+    opacity: 0.8;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a.gh-btn {
+    display: block;
+    background: #ffffff;
+    text-decoration: none;
+    margin: 28px 0 0;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.gh-post-upgrade-cta a.gh-btn:hover {
+    opacity: 0.92;
+}</style>
+    <script async src="/public/cards.min.js?v=f52c8b2156"></script>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=f52c8b2156">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-73VB9DC17E"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-73VB9DC17E');
+</script><style>:root {--ghost-accent-color: #15171A;}</style>
+</head>
+
+<body class="post-template tag-recommender-systems tag-machine-learning tag-data-science">
+    <div class="gh-site">
+        <header id="gh-head" class="gh-head gh-outer">
+            <div class="gh-head-inner">
+                <div class="gh-head-brand">
+                    <div class="gh-head-brand-wrapper">
+                        <a class="gh-head-logo" href="https://rmeinl.com">
+                                rmeinl
+                        </a>
+
+                        <span class="gh-head-description">/ gene regulatory networks / bioelectricity / longevity / machine learning</span>
+                    </div>
+                    <button class="gh-burger"></button>
+                </div>
+
+                <nav class="gh-head-menu">
+                    <ul class="nav">
+    <li class="nav-home"><a href="https://rmeinl.com/">Home</a></li>
+    <li class="nav-about-me"><a href="https://rmeinl.com/about-me/">About me</a></li>
+    <li class="nav-blog nav-current-parent"><a href="https://rmeinl.com/blog/">Blog</a></li>
+    <li class="nav-recommended"><a href="https://rmeinl.com/recommended/">Recommended</a></li>
+    <li class="nav-projects"><a href="https://rmeinl.com/projects/">Projects</a></li>
+</ul>
+
+                </nav>
+
+            </div>
+        </header>
+
+        
+
+<main id="gh-main" class="gh-main">
+    <article class="gh-article post tag-recommender-systems tag-machine-learning tag-data-science no-image">
+        <header class="gh-article-header gh-canvas">
+        <div class="gh-article-meta">
+            <time class="gh-article-date" datetime="2020-10-04">Oct 4, 2020</time>
+        </div>
+
+    <h1 class="gh-article-title">Recommender Systems: The Most Valuable Application of Machine Learning (Part 2)</h1>
+
+        <p class="gh-article-excerpt">Why Recommender Systems are the most valuable application of Machine Learning and how Machine Learning-driven Recommenders already drive almost every aspect of our lives.</p>
+</header>
+
+
+<section class="gh-content gh-canvas">
+    <p>Why Recommender Systems are the most valuable application of Machine Learning and how Machine Learning-driven Recommenders already drive almost every aspect of our lives.</p><p><a href="https://towardsdatascience.com/recommender-systems-the-most-valuable-application-of-machine-learning-2bc6903c63ce">Read this article on Medium.</a></p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn-images-1.medium.com/max/1600/1*F2mBbZRHPXxa3cyg3z8esg.png" class="kg-image" alt loading="lazy"><figcaption>Recommender Systems already drive almost every aspect of our daily&nbsp;lives.</figcaption></figure><hr><p>This is the second part of the article published on 11 May. In the first part I covered:</p><ul><li>Business Value</li><li>Problem Formulation</li><li>Data</li><li>Algorithms</li></ul><p>In this second part I will cover the following topics:</p><ul><li>Evaluation Metrics</li><li>User Interface</li><li>Cold-start Problem</li><li>Exploration vs. Exploitation</li><li>The Future of Recommender Systems</li></ul><p>Throughout this article, I will continue to use examples of the companies that have built the most widely used systems over the last couple of years, including Airbnb, Amazon, Instagram, LinkedIn, Netflix, Spotify, Uber Eats, and YouTube.</p><hr><h3 id="evaluation-metrics">Evaluation Metrics</h3><p>Now that we have the algorithm for our Recommender System, we need to find a way to evaluate its performance. As with every Machine Learning model, there are two types of evaluation:</p><ol><li>Offline Evaluation</li><li>Online Evaluation</li></ol><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn-images-1.medium.com/max/1600/1*HjqVASOg7qdIUEafmYK9rg.png" class="kg-image" alt loading="lazy"><figcaption>Offline/Online Testing Framework</figcaption></figure><p>Generally speaking, we can consider the Offline Evaluation metrics as <em>low-level</em> metrics, that are usually easily measurable. The most well-known example would be Netflix choosing to use <em>root mean squared error</em> (RMSE) as a proxy metric for their Netflix Prize Challenge. The Online Evaluation metrics are the <em>high-level</em> business metrics that are only measurable as soon as we ship our model into the real world and test it with real users. Some examples include customer retention, click-through rate, or user engagement.</p><h4 id="offline-evaluation">Offline Evaluation</h4><p>As most of the existing Recommender Systems consist of two stages (candidate generation and ranking), we need to pick the right metrics for each stage. For the candidate generation stage,<a href="https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/45530.pdf" rel="noopener"> YouTube</a>, for instance, focuses on <strong>high precision</strong> so <em>“out of all the videos that were pre-selected how many are relevant”</em>. This makes sense given that in the first stage we want to filter for a smaller set of videos whilst making sure all of them are potentially relevant to the user. In the second stage, presenting a few “best” recommendations in a list requires a fine-level representation to distinguish relative importance among candidates with <strong>high recall </strong>(<em>“how many of the relevant videos did we find”</em>)<strong>.</strong></p><p>Often, most of the examples are using the standard evaluation metrics used in the Machine Learning community: from ranking measures, such as normalized discounted cumulative gain, mean reciprocal rank, or fraction of concordant pairs, to classification metrics including accuracy, precision, recall, or F-score.</p><p><a href="https://ai.facebook.com/blog/powered-by-ai-instagrams-explore-recommender-system/" rel="noopener">Instagram formulated</a> the optimization function of their final pass model a little different:</p><blockquote>We predict individual actions that people take on each piece of media, whether they’re positive actions such as like and save, or negative actions such as “See Fewer Posts Like This” (SFPLT). We use a multi-task multi-label (MTML) neural network to predict these events.</blockquote><p>As appealing as offline experiments are, they have a major drawback: they assume that members would have behaved in the same way, for example, playing the same videos, if the new algorithm being evaluated had been used to generate the recommendations. That’s why we need online evaluation to measure the actual impact our model has on the higher-level business metrics.</p><h4 id="online-evaluation">Online Evaluation</h4><p>The approach to be aware of here is A/B testing. There are many interesting and exhaustive articles/<a href="https://www.udacity.com/course/ab-testing--ud257" rel="noopener">courses</a> that cover this well, therefore I won’t spend too much time on this. The only slight variation I have encountered is Netflix’s approach called “Consumer Data Science” that you can<a href="https://netflixtechblog.com/how-we-determine-product-success-980f81f0047e" rel="noopener"> read about it here</a>.</p><p>The most popular high-level metrics that companies are measuring here are <em>Click-Through Rate</em> and <em>Engagement</em>. Uber Eats goes further here and designed a multi-objective tradeoff that<a href="https://eng.uber.com/uber-eats-recommending-marketplace/" rel="noopener"> captures multiple high-level metrics</a> to account for the overall health of their three-sided marketplace (among others: Marketplace Fairness, Gross Bookings, Reliability, Eater Happiness). In addition to medium-term engagement, Netflix focuses on member retention rates as their online tests can<a href="https://dl.acm.org/doi/pdf/10.1145/2843948" rel="noopener"> range from between 2–6 months</a>.</p><p>YouTube famously prioritizes watch-time over click-through rate. They even<a href="https://youtube-creators.googleblog.com/2012/08/youtube-now-why-we-focus-on-watch-time.html" rel="noopener"> wrote an article, explaining why</a>:</p><blockquote>Ranking by click-through rate often promotes deceptive videos that the user does not complete (“clickbait”) whereas watch time better captures engagement</blockquote><h4 id="evaluating-embeddings">Evaluating Embeddings</h4><p>As covered in the section on algorithms, embeddings are a crucial part of the candidate generation stage. However, unlike with a classification or regression model, it’s<a href="https://blog.twitter.com/engineering/en_us/topics/insights/2018/embeddingsattwitter.html" rel="noopener"> notoriously difficult to measure the quality of an embedding</a> given that they are often being used in different contexts. A sanity check we can perform is to map the high-dimensional embedding vector into a lower-dimensional representation (via PCA, t-SNE, or UMAP) or apply clustering techniques such as k-means and then visualize the results. Airbnb did this with their<a href="https://medium.com/airbnb-engineering/listing-embeddings-for-similar-listing-recommendations-and-real-time-personalization-in-search-601172f7603e"> listing embeddings</a> to confirm that listings from similar locations are clustered together.</p><hr><h3 id="user-interface">User Interface</h3><p>For a Machine Learning Engineer or Data Scientist, the probably most overlooked aspect of the equation is the User Interface. The problem is that if your UI does not contain the needed components to showcase the recommendations or showcases them in the wrong context, the feedback loop is inherently flawed.</p><p>Let’s take Linkedin as an example to illustrate this. If I’m browsing through people’s profiles, on the right-hand side of the screen I see recommendations for <em>similar people</em>. When I’m browsing through companies, I see recommendations for <em>similar companies</em>. The recommendations are adapted to my current goals and context and encourage me to keep browsing the site. If the <em>similar companies</em> recommendations would appear on a person’s profile, I would probably be less encouraged to click on their profile as it is not what I am currently looking for.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn-images-1.medium.com/max/1600/1*i-3rNsokIOjyoBRgeiOhvA.png" class="kg-image" alt loading="lazy"><figcaption>Similar User Recommendations on&nbsp;Linkedin</figcaption></figure><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn-images-1.medium.com/max/1600/1*A1NpLcH0HG0RrBB3oOTVKA.png" class="kg-image" alt loading="lazy"><figcaption>Similar Companies Recommendations on&nbsp;Linkedin</figcaption></figure><p>You can build the best Recommender System in the world, however, if your interface is not designed to serve the user’s needs and wants, no one will appreciate the recommendations. In fact, the User Interface challenge is so crucial that<a href="https://netflixtechblog.com/learning-a-personalized-homepage-aa8ec670359a" rel="noopener"> Netflix turned all components on their website into dynamic ones</a> which are assembled by a Machine Learning algorithm to best reflect the goals of a user.</p><p>Spotify followed that model and <a href="https://labs.spotify.com/2020/01/16/for-your-ears-only-personalizing-spotify-home-with-machine-learning/" rel="noopener">adopted a similar layout for their home screen design</a>, as can be seen below.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn-images-1.medium.com/max/1600/1*ZopV25d9-x1Gma5-YIbkIA.png" class="kg-image" alt loading="lazy"><figcaption>Personalizing Spotify Home with Machine Learning (Source:&nbsp;<a href="https://www.oreilly.com/radar/personalization-of-spotify-home-and-tensorflow/" data-href="https://www.oreilly.com/radar/personalization-of-spotify-home-and-tensorflow/" class="markup--anchor markup--figure-anchor" rel="noopener" target="_blank">Spotify</a>)</figcaption></figure><p>This is an ongoing area where there is still a lot of experimentation. As an example, YouTube recently changed their homepage interface to enable users to narrow down the recommendations for different topics:</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn-images-1.medium.com/max/1600/1*Edcu3SHtcLuF5aZqI1N_rw.png" class="kg-image" alt loading="lazy"><figcaption>New YouTube Home&nbsp;Page</figcaption></figure><hr><h3 id="cold-start-problem">Cold-start Problem</h3><p>The<a href="https://en.wikipedia.org/wiki/Cold_start_%28computing%29" rel="noopener"> cold-start problem</a> is often seen in Recommender Systems because methods such as collaborative filtering rely heavily on past user-item interactions. Companies are confronted with the cold-start problem in two ways: user and item cold-start. Depending on the type of platform, either one of them is more prevalent.</p><h4 id="user-cold-start">User cold-start</h4><p>Imagine a new member signs up for Netflix. At this point, the company doesn’t know anything about the new members’ preferences. How does the company keep her engaged by providing great recommendations?</p><p>In Netflix’s case, new members get a one-month free trial, during which cancellation rates are the highest while they decrease quickly after that. This is why any improvements to the cold-start problem present an immense business opportunity for Netflix, in order to increase engagement and retention in those first 30 days. Today, their members are given a survey during the sign-up process, during which they are asked to select videos from an algorithmically populated set that is then used as an input into all of their algorithms.</p><h4 id="item-cold-start">Item cold-start</h4><p>Companies face a similar challenge when new items or content are added to the catalog. Platforms like Netflix or Prime Video hold an existing catalog of media items that changes less frequently (it takes time to create movies or series!), therefore they struggle less with this. On the contrary, on Airbnb or Zillow, new listings are created every day and at that point, they do not have an embedding as they were not present during the training process. Airbnb solves this the following way:</p><blockquote>To create embeddings for a new listing we find 3 geographically closest listings that do have embeddings, and are of same listing type and price range as the new listing, and calculate their mean vector.</blockquote><p>For Zillow, this is especially critical as some of the new home listings might only be on the site for a couple of days. They<a href="https://www.zillow.com/tech/embedding-similar-home-recommendation/" rel="noopener"> creatively solved this problem</a> by creating a neural network-based mapping function from the content space to the embedding space, which is guided by the engagement data from users during the learning phase. This allows them to map a new home listing to the learned embedding space just by using its features.</p><hr><h3 id="exploration-vs-exploitation">Exploration vs. Exploitation</h3><p>The concept of exploration/exploitation can be seen as the balancing of new content with well-established content. I was going to illustrate this concept myself, while I found this great excerpt that hits it right out of the ballpark:</p><blockquote>“Imagine you’ve just entered an ice cream shop. You now face a crucial decision — out of about 30 flavors you need to choose only one!<br>You can go with two strategies: either go with that favorite flavor of yours that you already know is the best; or explore new flavors you never tried before, and maybe find a new best flavor.<br>These two strategies — exploitation and exploration — can also be used when recommending content. We can either exploit items that have high click-through rate with high certainty — maybe because these items have been shown thousands of times to similar users, or we can explore new items we haven’t shown to many users in the past. Incorporating exploration into your recommendation strategy is crucial — without it, new items don’t stand a chance against older, more familiar ones.”</blockquote><p><em>(Source: </em><a href="https://anotherdatum.com/exploration-exploitation.html" rel="noopener"><em>Recommender Systems: Exploring the Unknown Using Uncertainty</em></a><em>)</em></p><p>This tradeoff is a typical reinforcement learning problem and a commonly used approach is the multi-armed bandit algorithm. This is used by Spotify for the<a href="http://sigir.org/afirm2019/slides/16.%20Friday%20-%20Music%20Recommendation%20at%20Spotify%20-%20Ben%20Carterette.pdf" rel="noopener"> personalization of each users’ home page</a> as well as Uber Eats for personalized recommendations<a href="https://eng.uber.com/uber-eats-recommending-marketplace/" rel="noopener"> optimized for their three-sided marketplace</a>. Two scientists at Netflix gave a great talk about how they are<a href="https://www.youtube.com/watch?v=kY-BCNHd_dM" rel="noopener"> using the MAB framework for movie recommendations</a>.</p><p>Though I should mention that this is, by no means, the final solution to this problem, it seems to work for Netflix, Spotify, and Uber Eats, right?</p><p>Yes. But!</p><p>Netflix has roughly 160 million users and about 6.000 movies/shows. Spotify has about 230 million users and 50 million songs + 500.000 podcasts.</p><p>Twitter’s 330 million active users generate more than <strong><em>500 million tweets</em></strong> per day (350.000 tweets per minute, 6.000 tweets per second). And then there’s YouTube, with its <strong><em>300 hours of videos</em></strong> uploaded every minute!</p><p>The exploration space in the two latter cases is a <em>little</em> bit bigger than in the case of Netflix or Uber Eats, which makes the problem a lot more challenging.</p><hr><h3 id="the-future-of-recommender-systems">The Future of Recommender Systems</h3><p>This is the end of my little survey over Recommender Systems. As we have observed, Recommender Systems already guide so many aspects of our life. All the algorithms we covered over the course of these two articles are competing for our attention every day. And after all, they are all maximizing the time spent on their platform. As I illustrated in the section on Evaluation methods, most of the algorithms are optimizing for something like Click-through rate, engagement, or in YouTube’s case: watch time.</p><p><strong><em>What does that mean for us as a consumer?</em></strong></p><p>What it means is, that we are not in control of our desires anymore. While this might sound poetic, think about it. Let’s look at YouTube; we all have goals when coming to the site. We might want to listen to music, watch something funny, or learn something new. But all the content that is recommended to us (either through the Home Page recommendations, Search Ranking, or Watch Next) is optimized to keep us on the site for longer.</p><p>Lex Fridman and François Chollet had a<a href="https://www.youtube.com/watch?v=Bo8MY4JpiXE" rel="noopener"> great conversation about this</a> on the Artificial Intelligence Podcast. Instead of choosing the metric to optimize for, what if companies would put the user in charge of choosing their own objective function? What if they would take the personal goals of the user’s profile into account and ask the user, what do you want to achieve? Right now, this technology is almost like our boss and we’re not in control of it. Wouldn’t it be incredible to leverage the power of Recommender Systems to be more like a mentor, a coach, or an assistant?</p><p>Imagine, as a consumer, you could ask YouTube to optimize the content to maximize learning outcomes. The technology is certainly already there. The challenge would really lie in aligning this with the existing business models and designing the right interface to empower the user to make that choice, and also to change as their goals evolve. With its new interface, YouTube is perhaps already taking baby-steps in that direction by putting the user in charge to select categories that she wants to see recommendations for. But this is just the beginning.</p><p>Could this be the way forward or is this just a consumer’s dream?</p><hr><p><strong><em>Resources</em></strong></p><p><a href="https://www.youtube.com/watch?v=Bo8MY4JpiXE" rel="noopener">François Chollet: Keras, Deep Learning, and the Progress of AI | Artificial Intelligence Podcast</a></p><p><a href="https://medium.com/airbnb-engineering/listing-embeddings-for-similar-listing-recommendations-and-real-time-personalization-in-search-601172f7603e" rel="noopener">Airbnb — Listing Embeddings in Search Ranking</a></p><p><a href="https://medium.com/airbnb-engineering/machine-learning-powered-search-ranking-of-airbnb-experiences-110b4b1a0789" rel="noopener">Airbnb — Machine Learning-Powered Search Ranking of Airbnb Experiences</a></p><p><a href="https://www.cs.umd.edu/~samir/498/Amazon-Recommendations.pdf" rel="noopener nofollow noopener noopener">Amazon — Amazon.com Recommendations Item-to-Item Collaborative Filtering</a></p><p><a href="https://www.amazon.science/the-history-of-amazons-recommendation-algorithm" rel="noopener nofollow noopener noopener">Amazon — The history of Amazon’s recommendation algorithm</a></p><p><a href="https://ai.facebook.com/blog/powered-by-ai-instagrams-explore-recommender-system/" rel="noopener nofollow noopener noopener">Instagram — Powered by AI: Instagram’s Explore recommender system</a></p><p><a href="https://ls13-www.cs.tu-dortmund.de/homepage/rsweb2014/papers/rsweb2014_submission_3.pdf" rel="noopener nofollow noopener noopener">LinkedIn — The Browsemaps: Collaborative Filtering at LinkedIn</a></p><p><a href="https://netflixtechblog.com/netflix-recommendations-beyond-the-5-stars-part-1-55838468f429" rel="noopener nofollow noopener noopener">Netflix — Netflix Recommendations: Beyond the 5 stars (Part 1)</a></p><p><a href="https://netflixtechblog.com/netflix-recommendations-beyond-the-5-stars-part-2-d9b96aa399f5" rel="noopener nofollow noopener noopener">Netflix — Netflix Recommendations: Beyond the 5 stars (Part 2)</a></p><p><a href="https://dl.acm.org/doi/pdf/10.1145/2843948" rel="noopener nofollow noopener noopener">Netflix — The Netflix Recommender System: Algorithms, Business Value, and Innovation</a></p><p><a href="https://netflixtechblog.com/learning-a-personalized-homepage-aa8ec670359a" rel="noopener nofollow noopener noopener">Netflix — Learning a Personalized Homepage</a></p><p><a href="https://pdfs.semanticscholar.org/f635/6c70452b3f56dc1ae07b4649a80239afb1b6.pdf" rel="noopener nofollow noopener noopener">Pandora — Pandora’s Music Recommender</a></p><p><a href="https://medium.com/s/story/spotifys-discover-weekly-how-machine-learning-finds-your-new-music-19a41ab76efe" rel="noopener">Spotify — Discover Weekly: How Does Spotify Know You So Well?</a></p><p><a href="https://labs.spotify.com/2020/01/16/for-your-ears-only-personalizing-spotify-home-with-machine-learning/" rel="noopener nofollow noopener noopener">Spotify — For Your Ears Only: Personalizing Spotify Home with Machine Learning</a></p><p><a href="https://www.slideshare.net/MrChrisJohnson/from-idea-to-execution-spotifys-discover-weekly/31-1_0_0_0_1" rel="noopener nofollow noopener noopener">Spotify — From Idea to Execution: Spotify’s Discover Weekly</a></p><p><a href="https://blog.twitter.com/engineering/en_us/topics/insights/2018/embeddingsattwitter.html" rel="noopener nofollow noopener noopener">Twitter — Embeddings@Twitter</a></p><p><a href="https://eng.uber.com/uber-eats-recommending-marketplace/" rel="noopener nofollow noopener noopener">Uber Eats — Food Discovery with Uber Eats: Recommending for the Marketplace</a></p><p><a href="https://eng.uber.com/uber-eats-graph-learning/" rel="noopener nofollow noopener noopener">Uber Eats — Food Discovery with Uber Eats: Using Graph Learning to Power Recommendations</a></p><p><a href="https://www.inf.unibz.it/~ricci/ISR/papers/p293-davidson.pdf" rel="noopener nofollow noopener noopener">YouTube — The YouTube Video Recommendation System</a></p><p><a href="https://arxiv.org/pdf/1409.2944.pdf" rel="noopener nofollow noopener noopener">YouTube — Collaborative Deep Learning for Recommender Systems</a></p><p><a href="https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/45530.pdf" rel="noopener nofollow noopener noopener">YouTube — Deep Neural Networks for YouTube Recommendations</a></p><p><a href="https://www.zillow.com/tech/embedding-similar-home-recommendation/" rel="noopener nofollow noopener noopener">Zillow — Home Embeddings for Similar Home Recommendations</a></p><p><a href="https://www.youtube.com/watch?v=giIXNoiqO_U&amp;list=PL-6SiIrhTAi6x4Oq28s7yy94ubLzVXabj" rel="noopener nofollow noopener noopener">Andrew Ng’s Machine Learning Course (Recommender Systems)</a></p><p><a href="https://developers.google.com/machine-learning/crash-course/embeddings/video-lecture" rel="noopener nofollow noopener noopener">Google’s Machine Learning Crash Course — Embeddings</a></p><hr>
+</section>
+
+    <footer class="gh-article-footer gh-canvas">
+        <nav class="gh-navigation">
+            <div class="gh-navigation-previous">
+                    <a class="gh-navigation-link u-hover reverse" href="/blog/recommender-systems-the-most-valuable-application-of-machine-learning-part-1/">
+                        <span class="u-hover-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor">
+    <path d="M20.547 22.107L14.44 16l6.107-6.12L18.667 8l-8 8 8 8 1.88-1.893z"></path>
+</svg>
+</span>
+                        <span class="u-hover-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor">
+    <path d="M20.547 22.107L14.44 16l6.107-6.12L18.667 8l-8 8 8 8 1.88-1.893z"></path>
+</svg>
+</span>
+                        Previous<span class="gh-navigation-hide">&nbsp;issue</span>
+                    </a>
+            </div>
+
+            <a class="gh-navigation-middle" href="/page/2"><span>Browse</span> all issues</a>
+
+            <div class="gh-navigation-next">
+                    <a class="gh-navigation-link u-hover" href="/blog/embed-tweet-threads-in-roam-research/">
+                        Next<span class="gh-navigation-hide">&nbsp;issue</span>
+                        <span class="u-hover-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor">
+    <path d="M11.453 22.107L17.56 16l-6.107-6.12L13.333 8l8 8-8 8-1.88-1.893z"></path>
+</svg></span>
+                        <span class="u-hover-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor">
+    <path d="M11.453 22.107L17.56 16l-6.107-6.12L13.333 8l8 8-8 8-1.88-1.893z"></path>
+</svg></span>
+                    </a>
+            </div>
+        </nav>
+    </footer>
+    </article>
+</main>
+
+
+
+
+        <footer class="gh-foot gh-outer">
+            <div class="gh-foot-inner gh-inner">
+                <div class="gh-copyright">
+                    rmeinl © 2021
+                </div>
+
+                <nav class="gh-foot-menu">
+                    
+                </nav>
+
+                <div class="gh-powered-by">
+                    <a href="https://ghost.org/" target="_blank" rel="noopener">Powered by Ghost</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+        <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+    <script src="/assets/built/main.min.js?v=f52c8b2156"></script>
+
+    
+</body>
+
+</html>

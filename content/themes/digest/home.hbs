@@ -1,11 +1,17 @@
 {{!< default}}
 
-<main id="gh-main" class="gh-main gh-canvas">
+<main class="gh-main gh-canvas">
+    <section class="gh-section" style="height: 14em; margin-bottom: 1rem">
+        {{> header-background background=@site.cover_image}}
+    </section>
 
-    {{> home-content}}
-    {{!-- {{#foreach posts}}
-        <article class="gh-article {{post_class}}">
-            {{> content}}
-        </article>
-    {{/foreach}} --}}
+    {{#page}}
+    <div class="gh-section">
+        <h2 "gh-pagehead-title">{{title}}</h2>
+        <div class="gh-content">
+            {{content}}
+        </div>
+    </div>
+    {{/page}}
+
 </main>

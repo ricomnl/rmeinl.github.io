@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Machine Learning System Design</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=Raleway:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&display=swap">
+    <link rel="stylesheet" href="/assets/built/screen.css?v=f52c8b2156">
+
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="canonical" href="https://rmeinl.com/blog/machine-learning-system-design/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="https://rmeinl.com/blog/machine-learning-system-design/amp/" />
+    
+    <meta property="og:site_name" content="rmeinl" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Machine Learning System Design" />
+    <meta property="og:description" content="Some great resources on Machine Learning System designs from Facebook, Twitter, Google, Airbnb, Uber, Instagram, Netflix, AWS and Spotify." />
+    <meta property="og:url" content="https://rmeinl.com/blog/machine-learning-system-design/" />
+    <meta property="og:image" content="https://rmeinl.com/content/images/2021/01/compass_cover.png" />
+    <meta property="article:published_time" content="2020-03-02T21:40:00.000Z" />
+    <meta property="article:modified_time" content="2021-04-25T14:07:28.000Z" />
+    <meta property="article:tag" content="machine learning" />
+    <meta property="article:tag" content="system design" />
+    <meta property="article:tag" content="data science" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Machine Learning System Design" />
+    <meta name="twitter:description" content="Some great resources on Machine Learning System designs from Facebook, Twitter, Google, Airbnb, Uber, Instagram, Netflix, AWS and Spotify." />
+    <meta name="twitter:url" content="https://rmeinl.com/blog/machine-learning-system-design/" />
+    <meta name="twitter:image" content="https://rmeinl.com/content/images/2021/01/compass_cover.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Rico Meinl" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="machine learning, system design, data science" />
+    <meta name="twitter:site" content="@rmeinl" />
+    <meta name="twitter:creator" content="@rmeinl" />
+    <meta property="og:image:width" content="1640" />
+    <meta property="og:image:height" content="624" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "rmeinl",
+        "url": "https://rmeinl.com/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://rmeinl.com/favicon.png",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Rico Meinl",
+        "url": "https://rmeinl.com/author/rico/",
+        "sameAs": [
+            "https://rmeinl.com",
+            "https://twitter.com/rmeinl"
+        ]
+    },
+    "headline": "Machine Learning System Design",
+    "url": "https://rmeinl.com/blog/machine-learning-system-design/",
+    "datePublished": "2020-03-02T21:40:00.000Z",
+    "dateModified": "2021-04-25T14:07:28.000Z",
+    "keywords": "machine learning, system design, data science",
+    "description": "Some great resources on Machine Learning System designs from Facebook, Twitter, Google, Airbnb, Uber, Instagram, Netflix, AWS and Spotify.",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://rmeinl.com/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 4.22" />
+    <link rel="alternate" type="application/rss+xml" title="rmeinl" href="https://rmeinl.com/blog/rss/" />
+    <script defer src="https://unpkg.com/@tryghost/portal@~1.12.0/umd/portal.min.js" data-ghost="https://rmeinl.com/" crossorigin="anonymous"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
+.gh-post-upgrade-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.gh-post-upgrade-cta-content {
+    border-radius: 8px;
+    padding: 40px 4vw;
+}
+
+.gh-post-upgrade-cta h2 {
+    color: #ffffff;
+    font-size: 28px;
+    letter-spacing: -0.2px;
+    margin: 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta p {
+    margin: 20px 0 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta small {
+    font-size: 16px;
+    letter-spacing: -0.2px;
+}
+
+.gh-post-upgrade-cta a {
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a:hover {
+    color: #ffffff;
+    opacity: 0.8;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a.gh-btn {
+    display: block;
+    background: #ffffff;
+    text-decoration: none;
+    margin: 28px 0 0;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.gh-post-upgrade-cta a.gh-btn:hover {
+    opacity: 0.92;
+}</style>
+    <script async src="/public/cards.min.js?v=f52c8b2156"></script>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=f52c8b2156">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-73VB9DC17E"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-73VB9DC17E');
+</script><style>:root {--ghost-accent-color: #15171A;}</style>
+</head>
+
+<body class="post-template tag-machine-learning tag-system-design tag-data-science">
+    <div class="gh-site">
+        <header id="gh-head" class="gh-head gh-outer">
+            <div class="gh-head-inner">
+                <div class="gh-head-brand">
+                    <div class="gh-head-brand-wrapper">
+                        <a class="gh-head-logo" href="https://rmeinl.com">
+                                rmeinl
+                        </a>
+
+                        <span class="gh-head-description">/ gene regulatory networks / bioelectricity / longevity / machine learning</span>
+                    </div>
+                    <button class="gh-burger"></button>
+                </div>
+
+                <nav class="gh-head-menu">
+                    <ul class="nav">
+    <li class="nav-home"><a href="https://rmeinl.com/">Home</a></li>
+    <li class="nav-about-me"><a href="https://rmeinl.com/about-me/">About me</a></li>
+    <li class="nav-blog nav-current-parent"><a href="https://rmeinl.com/blog/">Blog</a></li>
+    <li class="nav-recommended"><a href="https://rmeinl.com/recommended/">Recommended</a></li>
+    <li class="nav-projects"><a href="https://rmeinl.com/projects/">Projects</a></li>
+</ul>
+
+                </nav>
+
+            </div>
+        </header>
+
+        
+
+<main id="gh-main" class="gh-main">
+    <article class="gh-article post tag-machine-learning tag-system-design tag-data-science no-image">
+        <header class="gh-article-header gh-canvas">
+        <div class="gh-article-meta">
+            <time class="gh-article-date" datetime="2020-03-02">Mar 2, 2020</time>
+        </div>
+
+    <h1 class="gh-article-title">Machine Learning System Design</h1>
+
+        <p class="gh-article-excerpt">Some great resources on Machine Learning System designs from Facebook, Twitter, Google, Airbnb, Uber, Instagram, Netflix, AWS and Spotify.</p>
+</header>
+
+
+<section class="gh-content gh-canvas">
+    <p><a href="https://becominghuman.ai/machine-learning-system-design-f2f4018f2f8">Read this post on Medium.</a></p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://rmeinl.com/content/images/2020/10/1_mHGcYI_L-ci7jnkKkzfBOw.png" class="kg-image" alt loading="lazy" width="1400" height="783" srcset="https://rmeinl.com/content/images/size/w600/2020/10/1_mHGcYI_L-ci7jnkKkzfBOw.png 600w, https://rmeinl.com/content/images/size/w1000/2020/10/1_mHGcYI_L-ci7jnkKkzfBOw.png 1000w, https://rmeinl.com/content/images/2020/10/1_mHGcYI_L-ci7jnkKkzfBOw.png 1400w" sizes="(min-width: 720px) 720px"><figcaption>Facebook Field Guide to Machine Learning</figcaption></figure><p>While preparing for job interviews I found some great resources on Machine Learning System designs from Facebook, Twitter, Google, Airbnb, Uber, Instagram, Netflix, AWS and Spotify.</p><p>I find this to be a fascinating topic because it’s something not often covered in online courses.</p><p><strong>Twitter</strong></p><ul><li><a href="https://blog.twitter.com/engineering/en_us/topics/insights/2017/using-deep-learning-at-scale-in-twitters-timelines.html" rel="noopener">Using Deep Learning at Scale in Twitter’s Timelines</a></li><li><a href="https://blog.twitter.com/engineering/en_us/topics/insights/2019/improving-engagement-on-digital-ads-with-delayed-feedback.html" rel="noopener">Improving engagement on digital ads with delayed feedback</a></li><li><a href="https://blog.twitter.com/engineering/en_us/topics/insights/2018/embeddingsattwitter.html" rel="noopener">Embeddings@Twitter</a></li></ul><p><strong>Instagram</strong></p><ul><li><a href="https://instagram-engineering.com/lessons-learned-at-instagram-stories-and-feed-machine-learning-54f3aaa09e56" rel="noopener">Lessons Learned at Instagram Stories and Feed Machine Learning</a></li><li><a href="https://ai.facebook.com/blog/powered-by-ai-instagrams-explore-recommender-system/" rel="noopener">Powered by AI: Instagram’s Explore recommender system</a></li></ul><p><strong>Facebook</strong></p><ul><li><a href="https://engineering.fb.com/security/fighting-abuse-scale-2019/" rel="noopener">Deep Entity Classification: An abusive account detection framework</a></li><li><a href="https://ai.facebook.com/blog/community-standards-report/" rel="noopener">New progress in using AI to detect harmful content</a></li></ul><p><strong>Uber Eats</strong></p><ul><li><a href="https://eng.uber.com/uber-eats-query-understanding/" rel="noopener">Food Discovery with Uber Eats: Building a Query Understanding Engine</a></li><li><a href="https://eng.uber.com/uber-eats-recommending-marketplace/" rel="noopener">Food Discovery with Uber Eats: Recommending for the Marketplace</a></li><li><a href="https://eng.uber.com/uber-eats-graph-learning/" rel="noopener">Food Discovery with Uber Eats: Using Graph Learning to Power Recommendations</a></li></ul><p><strong>Uber</strong></p><ul><li><a href="https://eng.uber.com/nlp-deep-learning-uber-maps/" rel="noopener">Applying Customer Feedback: How NLP &amp; Deep Learning Improve Uber’s Maps</a></li><li><a href="https://eng.uber.com/forecasting-introduction/" rel="noopener">Forecasting at Uber: An Introduction</a></li></ul><p><strong>Airbnb</strong></p><ul><li><a href="https://medium.com/airbnb-engineering/using-machine-learning-to-predict-value-of-homes-on-airbnb-9272d3d4739d">Using Machine Learning to Predict Value of Homes On Airbnb</a></li><li><a href="https://medium.com/airbnb-engineering/listing-embeddings-for-similar-listing-recommendations-and-real-time-personalization-in-search-601172f7603e">Listing Embeddings in Search Ranking</a></li><li><a href="https://medium.com/airbnb-engineering/learning-market-dynamics-for-optimal-pricing-97cffbcc53e3">Learning Market Dynamics for Optimal Pricing</a></li><li><a href="https://medium.com/airbnb-engineering/categorizing-listing-photos-at-airbnb-f9483f3ab7e3">Categorizing Listing Photos at Airbnb</a></li><li><a href="https://medium.com/airbnb-engineering/applying-deep-learning-to-airbnb-search-7ebd7230891f">Applying Deep Learning To Airbnb Search</a></li><li><a href="https://medium.com/airbnb-engineering/discovering-and-classifying-in-app-message-intent-at-airbnb-6a55f5400a0c">Discovering and Classifying In-app Message Intent at Airbnb</a></li></ul><p><strong>Airbnb Experiences</strong></p><ul><li><a href="https://medium.com/airbnb-engineering/machine-learning-powered-search-ranking-of-airbnb-experiences-110b4b1a0789">Machine Learning-Powered Search Ranking of Airbnb Experiences</a></li></ul><p><strong>Linkedin</strong></p><ul><li><a href="https://engineering.linkedin.com/blog/2018/10/an-introduction-to-ai-at-linkedin" rel="noopener">An Introduction to AI at LinkedIn</a></li><li><a href="https://engineering.linkedin.com/blog/2019/fairness-privacy-transparency-by-design" rel="noopener">Fairness, Privacy, and Transparency by Design in AI/ML Systems</a></li><li><a href="https://engineering.linkedin.com/blog/2019/06/building-communities-around-interests" rel="noopener">Communities AI: Building Communities Around Interests on LinkedIn</a></li><li><a href="https://engineering.fb.com/security/fighting-abuse-scale-2019/" rel="noopener">Preventing abuse using unsupervised learning</a></li></ul><p><strong>Google</strong></p><ul><li><a href="http://highscalability.com/blog/2016/3/16/jeff-dean-on-large-scale-deep-learning-at-google.html" rel="noopener">Jeff Dean On Large-Scale Deep Learning At Google</a></li></ul><p><strong>Netflix</strong></p><ul><li><a href="https://www.youtube.com/watch?v=kY-BCNHd_dM" rel="noopener">A Multi-Armed Bandit Framework for Recommendations at Netflix</a></li></ul><p><strong>Spotify</strong></p><ul><li><a href="https://labs.spotify.com/2020/01/16/for-your-ears-only-personalizing-spotify-home-with-machine-learning/" rel="noopener">For Your Ears Only: Personalizing Spotify Home with Machine Learning</a></li><li><a href="https://medium.com/s/story/spotifys-discover-weekly-how-machine-learning-finds-your-new-music-19a41ab76efe">How Does Spotify Know You So Well?</a></li></ul><hr><p>In addition, here are some resources on a more general process. Starting with the book <a href="https://www.amazon.com/Data-Science-Business-Data-Analytic-Thinking/dp/1449361323" rel="noopener">Data Science for Business</a> which explains the CRISP-DM (Cross Industry Standard Process for Data Mining).</p><p>The process involves six stages:</p><ol><li>Business Understanding</li><li>Data Understanding</li><li>Data Preparation</li><li>Modelling</li><li>Evaluation</li><li>Deployment</li></ol><p>Here is a more high-level breakdown on <a href="https://gist.github.com/bluekidds/cad5c0ea2e5051b638ec39810f3c4b09" rel="noopener">how to apply CRISP-DM on AWS.</a></p><p>Facebook also created a video series where they go into depth in how they structure Machine Learning Projects with the <a href="https://research.fb.com/the-facebook-field-guide-to-machine-learning-video-series/" rel="noopener">Facebook Field Guide</a> to Machine Learning.</p>
+</section>
+
+    <footer class="gh-article-footer gh-canvas">
+        <nav class="gh-navigation">
+            <div class="gh-navigation-previous">
+                    <a class="gh-navigation-link u-hover reverse" href="/blog/the-world-doesnt-care-lessons-from-startup-failure/">
+                        <span class="u-hover-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor">
+    <path d="M20.547 22.107L14.44 16l6.107-6.12L18.667 8l-8 8 8 8 1.88-1.893z"></path>
+</svg>
+</span>
+                        <span class="u-hover-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor">
+    <path d="M20.547 22.107L14.44 16l6.107-6.12L18.667 8l-8 8 8 8 1.88-1.893z"></path>
+</svg>
+</span>
+                        Previous<span class="gh-navigation-hide">&nbsp;issue</span>
+                    </a>
+            </div>
+
+            <a class="gh-navigation-middle" href="/page/2"><span>Browse</span> all issues</a>
+
+            <div class="gh-navigation-next">
+                    <a class="gh-navigation-link u-hover" href="/blog/recommender-systems-the-most-valuable-application-of-machine-learning-part-1/">
+                        Next<span class="gh-navigation-hide">&nbsp;issue</span>
+                        <span class="u-hover-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor">
+    <path d="M11.453 22.107L17.56 16l-6.107-6.12L13.333 8l8 8-8 8-1.88-1.893z"></path>
+</svg></span>
+                        <span class="u-hover-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor">
+    <path d="M11.453 22.107L17.56 16l-6.107-6.12L13.333 8l8 8-8 8-1.88-1.893z"></path>
+</svg></span>
+                    </a>
+            </div>
+        </nav>
+    </footer>
+    </article>
+</main>
+
+
+
+
+        <footer class="gh-foot gh-outer">
+            <div class="gh-foot-inner gh-inner">
+                <div class="gh-copyright">
+                    rmeinl © 2021
+                </div>
+
+                <nav class="gh-foot-menu">
+                    
+                </nav>
+
+                <div class="gh-powered-by">
+                    <a href="https://ghost.org/" target="_blank" rel="noopener">Powered by Ghost</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+        <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+    <script src="/assets/built/main.min.js?v=f52c8b2156"></script>
+
+    
+</body>
+
+</html>

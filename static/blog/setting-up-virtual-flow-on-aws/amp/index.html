@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html ⚡>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+    <title>Setting up Virtual Flow on AWS using Parallelcluster and Slurm</title>
+
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="canonical" href="https://rmeinl.com/blog/setting-up-virtual-flow-on-aws/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    
+    <meta property="og:site_name" content="rmeinl" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Setting up Virtual Flow on AWS using Parallelcluster and Slurm" />
+    <meta property="og:description" content="This is a short tutorial on how to set up AWS Parallelcluster with Slurm to run VirtualFlow.  VirtualFlow is a versatile, parallel workflow platform for carrying out virtual screening related tasks on Linux-based computer clusters of any type and size which are managed by a batchsystem (such as SLURM).AWS" />
+    <meta property="og:url" content="https://rmeinl.com/blog/setting-up-virtual-flow-on-aws/" />
+    <meta property="og:image" content="https://rmeinl.com/content/images/2021/01/compass_cover.png" />
+    <meta property="article:published_time" content="2021-04-19T10:27:48.000Z" />
+    <meta property="article:modified_time" content="2021-04-25T14:06:35.000Z" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Setting up Virtual Flow on AWS using Parallelcluster and Slurm" />
+    <meta name="twitter:description" content="This is a short tutorial on how to set up AWS Parallelcluster with Slurm to run VirtualFlow.  VirtualFlow is a versatile, parallel workflow platform for carrying out virtual screening related tasks on Linux-based computer clusters of any type and size which are managed by a batchsystem (such as SLURM).AWS" />
+    <meta name="twitter:url" content="https://rmeinl.com/blog/setting-up-virtual-flow-on-aws/" />
+    <meta name="twitter:image" content="https://rmeinl.com/content/images/2021/01/compass_cover.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Rico Meinl" />
+    <meta name="twitter:site" content="@rmeinl" />
+    <meta name="twitter:creator" content="@rmeinl" />
+    <meta property="og:image:width" content="1640" />
+    <meta property="og:image:height" content="624" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "rmeinl",
+        "url": "https://rmeinl.com/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://rmeinl.com/favicon.png",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Rico Meinl",
+        "url": "https://rmeinl.com/author/rico/",
+        "sameAs": [
+            "https://rmeinl.com",
+            "https://twitter.com/rmeinl"
+        ]
+    },
+    "headline": "Setting up Virtual Flow on AWS using Parallelcluster and Slurm",
+    "url": "https://rmeinl.com/blog/setting-up-virtual-flow-on-aws/",
+    "datePublished": "2021-04-19T10:27:48.000Z",
+    "dateModified": "2021-04-25T14:06:35.000Z",
+    "description": "This is a short tutorial on how to set up AWS Parallelcluster\n[https://aws.amazon.com/hpc/parallelcluster/] with Slurm to run VirtualFlow\n[https://virtual-flow.org/]. \n\n&gt; VirtualFlow is a versatile, parallel workflow platform for carrying out virtual\nscreening related tasks on Linux-based computer clusters of any type and size\nwhich are managed by a batchsystem (such as SLURM).\nAWS Parallelcluster with Slurm\nCreating our working environment\nFirst, we&#x27;ll create our working directory and set up a ",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://rmeinl.com/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 4.22" />
+    <link rel="alternate" type="application/rss+xml" title="rmeinl" href="https://rmeinl.com/blog/rss/" />
+
+    <style amp-custom>
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    html {
+        overflow-x: hidden;
+        overflow-y: scroll;
+        font-size: 62.5%;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    body {
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        color: #3a4145;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        font-size: 1.7rem;
+        line-height: 1.55em;
+        font-weight: 400;
+        font-style: normal;
+        background: #fff;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    p,
+    ul,
+    ol,
+    li,
+    dl,
+    dd,
+    hr,
+    pre,
+    form,
+    table,
+    video,
+    figure,
+    figcaption,
+    blockquote {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul[class],
+    ol[class] {
+        padding: 0;
+        list-style: none;
+    }
+
+    img {
+        display: block;
+        max-width: 100%;
+    }
+
+    input,
+    button,
+    select,
+    textarea {
+        font: inherit;
+        -webkit-appearance: none;
+    }
+
+    fieldset {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    label {
+        display: block;
+        font-size: 0.9em;
+        font-weight: 700;
+    }
+
+    hr {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid currentcolor;
+        opacity: 0.1;
+    }
+
+    ::selection {
+        text-shadow: none;
+        background: #cbeafb;
+    }
+
+    mark {
+        background-color: #fdffb6;
+    }
+
+    small {
+        font-size: 80%;
+    }
+
+    sub,
+    sup {
+        position: relative;
+        font-size: 75%;
+        line-height: 0;
+        vertical-align: baseline;
+    }
+    sup {
+        top: -0.5em;
+    }
+    sub {
+        bottom: -0.25em;
+    }
+
+    ul li + li {
+        margin-top: 0.6em;
+    }
+
+    a {
+        color: var(--ghost-accent-color, #1292EE);
+        text-decoration-skip-ink: auto;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 0;
+        font-weight: 700;
+        color: #121212;
+        line-height: 1.4em;
+    }
+
+    h1 {
+        font-size: 3.4rem;
+        line-height: 1.1em;
+    }
+
+    h2 {
+        font-size: 2.4rem;
+        line-height: 1.2em;
+    }
+
+    h3 {
+        font-size: 1.8rem;
+    }
+
+    h4 {
+        font-size: 1.7rem;
+    }
+
+    h5 {
+        font-size: 1.6rem;
+    }
+
+    h6 {
+        font-size: 1.6rem;
+    }
+
+    amp-img {
+        height: 100%;
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    amp-img img {
+        object-fit: cover;
+    }
+
+    .page-header {
+        padding: 50px 5vmin 30px;
+        text-align: center;
+        font-size: 2rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .page-header a {
+        color: #121212;
+        font-weight: 700;
+        text-decoration: none;
+        font-size: 1.6rem;
+        letter-spacing: -0.1px;
+    }
+
+    .post {
+        max-width: 680px;
+        margin: 0 auto;
+    }
+
+    .post-header {
+        margin: 0 5vmin 5vmin;
+        text-align: center;
+    }
+
+    .post-meta {
+        margin: 1rem 0 0 0;
+        text-transform: uppercase;
+        color: #738a94;
+        font-weight: 500;
+        font-size: 1.3rem;
+    }
+
+    .post-image {
+        margin: 0 0 5vmin;
+    }
+
+    .post-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .post-content {
+        padding: 0 5vmin;
+    }
+
+    .post-content > * + * {
+        margin-top: 1.5em;
+    }
+
+    .post-content [id]:not(:first-child) {
+        margin: 2em 0 0;
+    }
+
+    .post-content > [id] + * {
+        margin-top: 1rem;
+    }
+
+    .post-content [id] + .kg-card,
+    .post-content blockquote + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content > ul,
+    .post-content > ol,
+    .post-content > dl {
+        padding-left: 1.9em;
+    }
+
+    .post-content hr {
+        margin-top: 40px;
+    }
+
+    .post .post-content hr + * {
+        margin-top: 40px;
+    }
+
+    .post-content amp-img {
+        background-color: #f8f8f8;
+    }
+
+    .post-content blockquote {
+        position: relative;
+        font-style: italic;
+    }
+
+    .post-content blockquote::before {
+        content: "";
+        position: absolute;
+        left: -1.5em;
+        top: 0;
+        bottom: 0;
+        width: 0.3rem;
+        background: var(--ghost-accent-color, #1292EE);
+    }
+
+    .post-content :not(.kg-card):not([id]) + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content .kg-card + :not(.kg-card) {
+        margin-top: 40px;
+    }
+
+    .kg-card figcaption {
+        padding: 1.5rem 1.5rem 0;
+        text-align: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.4em;
+        opacity: 0.6;
+    }
+
+    .kg-card figcaption strong {
+        color: rgba(0,0,0,0.8);
+    }
+
+    .post-content :not(pre) code {
+        vertical-align: middle;
+        padding: 0.15em 0.4em 0.15em;
+        border: #e1eaef 1px solid;
+        font-weight: 400;
+        font-size: 0.9em;
+        line-height: 1em;
+        color: #15171a;
+        background: #f0f6f9;
+        border-radius: 0.25em;
+    }
+
+    .post-content > pre {
+        overflow: scroll;
+        padding: 16px 20px;
+        color: #fff;
+        background: #1F2428;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px -2px rgba(0,0,0,.1), 0 0 1px rgba(0,0,0,.4);
+    }
+
+    .kg-embed-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .kg-image-card img {
+        margin: auto;
+    }
+
+    .kg-gallery-card + .kg-gallery-card {
+        margin-top: 0.75em;
+    }
+
+    .kg-gallery-container {
+        position: relative;
+    }
+
+    .kg-gallery-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .kg-gallery-image {
+        width: 100%;
+        height: 100%;
+    }
+
+    .kg-gallery-row:not(:first-of-type) {
+        margin: 0.75em 0 0 0;
+    }
+
+    .kg-gallery-image:not(:first-of-type) {
+        margin: 0 0 0 0.75em;
+    }
+
+    .kg-bookmark-card,
+    .kg-bookmark-publisher {
+        position: relative;
+    }
+
+    .kg-bookmark-container,
+    .kg-bookmark-container:hover {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row-reverse;
+        color: currentColor;
+        background: rgba(255,255,255,0.6);
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        text-decoration: none;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.4);
+        overflow: hidden;
+    }
+
+    .kg-bookmark-content {
+        flex-basis: 0;
+        flex-grow: 999;
+        padding: 20px;
+        order: 1;
+    }
+
+    .kg-bookmark-title {
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 1.3em;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        max-height: 45px;
+        margin: 0.5em 0 0 0;
+        font-size: 1.4rem;
+        line-height: 1.55em;
+        overflow: hidden;
+        opacity: 0.8;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .kg-bookmark-metadata {
+        margin-top: 20px;
+    }
+
+    .kg-bookmark-metadata {
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.3em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-metadata amp-img {
+        width: 18px;
+        height: 18px;
+        max-width: 18px;
+        max-height: 18px;
+        margin-right: 10px;
+    }
+
+    .kg-bookmark-thumbnail {
+        display: flex;
+        flex-basis: 20rem;
+        flex-grow: 1;
+        justify-content: flex-end;
+    }
+
+    .kg-bookmark-thumbnail amp-img {
+        max-height: 200px;
+    }
+
+    .kg-bookmark-author {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-publisher::before {
+        content: "•";
+        margin: 0 .5em;
+    }
+
+    .kg-nft-card-container {
+        position: relative;
+        display: flex;
+        flex: auto;
+        flex-direction: column;
+        text-decoration: none;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        font-size: 1.4rem;
+        font-weight: 400;
+        box-shadow: 0 2px 6px -2px rgb(0 0 0 / 10%), 0 0 1px rgb(0 0 0 / 40%);
+        width: 100%;
+        max-width: 512px;
+        color: #15212A;
+        background: #fff;
+        border-radius: 5px;
+        transition: none;
+        margin: 0 auto; 
+    }
+
+    .kg-nft-metadata {
+        padding: 2.0rem;
+    }
+
+    .kg-nft-image-container {
+        position: relative;
+    }
+
+    .kg-nft-image {
+        display: flex;
+        border-radius: 5px 5px 0 0;
+    }
+
+    .kg-nft-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .kg-nft-header h4.kg-nft-title {
+        font-size: 1.9rem;
+        font-weight: 700;
+        margin: 0;
+        color: #15212A;
+    }
+
+    .kg-nft-header amp-img {
+        max-width: 114px;
+        max-height: 26px;
+    }
+
+    .kg-nft-opensea-logo {
+        margin-top: 2px;
+        width: 100px;
+    }
+
+    .kg-nft-creator {
+        font-family: inherit;
+        color: #95A1AD;
+    }
+
+    .kg-nft-creator span {
+        font-weight: 500;
+        color: #15212A;
+    }
+
+    .kg-nft-card p.kg-nft-description {
+        font-size: 1.4rem;
+        line-height: 1.4em;
+        margin: 2.0rem 0 0;
+        color: #222;
+    }
+
+    .kg-button-card {
+        display: flex;
+        position: static;
+        align-items: center;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .kg-btn {
+        display: flex;
+        position: static;
+        align-items: center;
+        padding: 0 2.0rem;
+        height: 4.0rem;
+        line-height: 4.0rem;
+        font-size: 1.65rem;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .kg-btn:hover {
+        opacity: 0.85;
+    }
+
+    .kg-btn-accent {
+        background-color: var(--ghost-accent-color, #1292EE);
+        color: #fff;
+    }
+
+    .kg-width-full.kg-card-hascaption {
+        display: grid;
+        grid-template-columns: inherit;
+    }
+
+    .post-content table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .post-content th {
+        padding: 0.5em 0.8em;
+        text-align: left;
+        font-size: .75em;
+        text-transform: uppercase;
+    }
+
+    .post-content td {
+        padding: 0.4em 0.7em;
+    }
+
+    .post-content tbody tr:nth-child(2n + 1) {
+        background-color: rgba(0,0,0,0.1);
+        padding: 1px;
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td:last-child {
+        box-shadow:
+            inset 1px 0 rgba(0,0,0,0.1),
+            inset -1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td {
+        box-shadow: inset 1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:last-child {
+        border-bottom: 1px solid rgba(0,0,0,.1);
+    }
+
+    .page-footer {
+        padding: 60px 5vmin;
+        margin: 60px auto 0;
+        text-align: center;
+        background-color: #f8f8f8;
+    }
+
+    .page-footer h3 {
+        margin: 0.5rem 0 0 0;
+    }
+
+    .page-footer p {
+        max-width: 500px;
+        margin: 1rem auto 1.5rem;
+        font-size: 1.7rem;
+        line-height: 1.5em;
+        color: rgba(0,0,0,0.6)
+    }
+
+    .powered {
+        display: inline-flex;
+        align-items: center;
+        margin: 30px 0 0;
+        padding: 6px 9px 6px 6px;
+        border: rgba(0,0,0,0.1) 1px solid;
+        font-size: 12px;
+        line-height: 12px;
+        letter-spacing: -0.2px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-weight: 500;
+        color: #222;
+        text-decoration: none;
+        background: #fff;
+        border-radius: 6px;
+    }
+
+    .powered svg {
+        height: 16px;
+        width: 16px;
+        margin: 0 6px 0 0;
+    }
+
+    @media (max-width: 600px) {
+        body {
+            font-size: 1.6rem;
+        }
+        h1 {
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+        }
+    }
+
+    @media (max-width: 400px) {
+        h1 {
+            font-size: 2.6rem;
+            line-height: 1.15em;
+        }
+        h2 {
+            font-size: 2rem;
+            line-height: 1.2em;
+        }
+        h3 {
+            font-size: 1.7rem;
+        }
+    }
+
+    :root {--ghost-accent-color: #15171A;}
+    </style>
+
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+    
+
+</head>
+
+<body class="amp-template">
+    <header class="page-header">
+        <a href="https://rmeinl.com">
+                <amp-img class="site-icon" src="https://rmeinl.com/content/images/2021/01/compass_favicon.png" width="50" height="50" layout="fixed"></amp-img>
+        </a>
+    </header>
+
+    <main class="content" role="main">
+        <article class="post">
+
+            <header class="post-header">
+                <h1 class="post-title">Setting up Virtual Flow on AWS using Parallelcluster and Slurm</h1>
+                <section class="post-meta">
+                    Rico Meinl -
+                    <time class="post-date" datetime="2021-04-19">19 Apr 2021</time>
+                </section>
+            </header>
+            <section class="post-content">
+
+                <p>This is a short tutorial on how to set up AWS <a href="https://aws.amazon.com/hpc/parallelcluster/">Parallelcluster</a> with Slurm to run <a href="https://virtual-flow.org/">VirtualFlow</a>. </p><blockquote>VirtualFlow is a versatile, parallel workflow platform for carrying out virtual screening related tasks on Linux-based computer clusters of any type and size which are managed by a batchsystem (such as SLURM).</blockquote><h2 id="aws-parallelcluster-with-slurm">AWS Parallelcluster with Slurm</h2><h3 id="creating-our-working-environment">Creating our working environment</h3><p>First, we'll create our working directory and set up a virtual environment using poetry. We need to add the awscli package as well as the aws-parallelcluster package.</p><pre><code>mkdir parallel_cluster
+cd parallel_cluster
+poetry init
+poetry add awscli aws-parallelcluster</code></pre><h3 id="setting-up-the-cluster-config">Setting up the cluster config</h3><p>To set up the AWS Parallelcluster I mainly followed <a href="https://aws.amazon.com/blogs/opensource/aws-parallelcluster/">this post</a>. We start by creating the config for our cluster. Make sure to create an <a href="https://us-west-2.console.aws.amazon.com/ec2/v2/home?region=us-west-2#KeyPairs">EC2 key pair</a> beforehand.</p><pre><code> $ poetry run pcluster configure                  
+Allowed values for AWS Region ID:
+1. ap-northeast-1
+2. ap-northeast-2
+3. ap-south-1
+4. ap-southeast-1
+5. ap-southeast-2
+6. ca-central-1
+7. eu-central-1
+8. eu-north-1
+9. eu-west-1
+10. eu-west-2
+11. eu-west-3
+12. sa-east-1
+13. us-east-1
+14. us-east-2
+15. us-west-1
+16. us-west-2
+AWS Region ID [us-west-2]: 16
+Allowed values for EC2 Key Pair Name:
+1. parallelcluster
+EC2 Key Pair Name [parallelcluster]: 1
+Allowed values for Scheduler:
+1. sge
+2. torque
+3. slurm
+4. awsbatch
+Scheduler [slurm]: 3
+Allowed values for Operating System:
+1. alinux
+2. alinux2
+3. centos7
+4. centos8
+5. ubuntu1604
+6. ubuntu1804
+Operating System [alinux2]: 2
+Minimum cluster size (instances) [0]: 1
+Maximum cluster size (instances) [10]: 
+Head node instance type [t2.micro]: c4.large
+Compute instance type [t2.micro]: c4.xlarge
+Automate VPC creation? (y/n) [n]: y</code></pre><p>We should now have a config file similar to this:</p><pre><code>$ cat ~/.parallelcluster/config 
+[aws]
+aws_region_name = us-west-2
+
+[aliases]
+ssh = ssh {CFN_USER}@{MASTER_IP} {ARGS}
+
+[global]
+cluster_template = default
+update_check = true
+sanity_check = true
+
+[vpc default]
+vpc_id = vpc-*****************
+master_subnet_id = subnet-*****************
+
+[cluster default]
+key_name = parallelcluster
+scheduler = slurm
+master_instance_type = c4.large
+base_os = alinux2
+vpc_settings = default
+queue_settings = compute
+
+[queue compute]
+enable_efa = false
+enable_efa_gdr = false
+compute_resource_settings = default
+
+[compute_resource default]
+instance_type = c4.xlarge
+min_count = 1</code></pre><h3 id="creating-the-cluster">Creating the cluster</h3><p>After the config file is set, we can create our cluster using the following commands. AWS will then spin up our CloudFormation stack which will take a couple of minutes.</p><pre><code>$ poetry run pcluster create test-cluster
+Beginning cluster creation for cluster: test-cluster
+Creating stack named: parallelcluster-test-cluster
+...</code></pre><p>In order to access our head node we can run the following:</p><pre><code>poetry run pcluster ssh test-cluster -i ~/.ssh/&lt;key_name&gt;</code></pre><h2 id="virtualflow">VirtualFlow</h2><p>To get started with VirtualFlow I recommend running through the <a href="https://docs.virtual-flow.org/tutorials/-LdE94b2AVfBFT72zK-v/vfvs-tutorial-1/introduction">first tutorial</a> to make sure the cluster has been set up correctly. I'm only going through the changes that need to be made and list the other steps solely for completeness. The tutorial does a good job at explaining each individual step.</p><h3 id="setting-up-virtualflow">Setting up VirtualFlow</h3><p>First, we download the tutorial files and unzip them.</p><pre><code>$ wget https://virtual-flow.org/sites/virtual-flow.org/files/tutorials/VFVS_GK.tar
+$ tar -xvf VFVS_GK.tar
+$ cd VFVS_GK/tools
+</code></pre><h3 id="preparing-the-config-files">Preparing the config files</h3><p>There are two files in which we need to make changes. We want to make sure our batchsystem is set to 'SLURM' and change the partition to 'compute' which is the default name when we use AWS Parallelcluster. </p><pre><code># tools/templates/all.ctrl
+...
+batchsystem=SLURM
+# Possible values: SLURM, TOQRUE, PBS, LSF, SGE
+# Settable via range control files: No
+...
+partition=compute
+# Partitions are also called queues in some batchsystems
+# Settable via range control files: Yes</code></pre><p>If 'compute' doesn't work, try running the following command to retrieve the correct partition name: </p><pre><code>$ sinfo
+PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST 
+compute*     up   infinite      5  idle~ compute-dy-c4xlarge-[5-9] 
+compute*     up   infinite      5  alloc compute-dy-c4xlarge-[1-4],compute-st-c4xlarge-1 </code></pre><p>The second config file we need to adjust is the Slurm job template script. Usually we should be able to leave all the default values but I ran into this error:</p><pre><code>srun: error: Unable to create step for job 874794: Memory required by task is not available</code></pre><p>In order to solve it, we simply comment out the line with the --mem-per-cpu parameter.</p><pre><code># Slurm Settings
+###############################################################################
+
+#SBATCH --job-name=h-1.1
+##SBATCH --mail-user=To be completed if uncommented
+#SBATCH --mail-type=fail
+#SBATCH --time=00-12:00:00
+##SBATCH --mem-per-cpu=1024M
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task=1
+#SBATCH --partition=main
+#SBATCH --output=../workflow/output-files/jobs/job-1.1_%j.out           # File to which standard out will be written
+#SBATCH --error=../workflow/output-files/jobs/job-1.1_%j.out            # File to which standard err will be written
+#SBATCH --signal=10@300</code></pre><p>As a last preparation step we simply go back to the /tools subfolder and run this command:</p><pre><code>./vf_prepare_folders.sh</code></pre><p>More details here: <a href="https://docs.virtual-flow.org/tutorials/-LdE94b2AVfBFT72zK-v/vfvs-tutorial-1/setting-up-the-workflow">https://docs.virtual-flow.org/tutorials/-LdE94b2AVfBFT72zK-v/vfvs-tutorial-1/setting-up-the-workflow</a>.</p><h3 id="starting-the-jobs">Starting the jobs</h3><p>To spin up our nodes, we simply run this command:</p><pre><code>./vf_start_jobline.sh 1 12 templates/template1.slurm.sh submit 1</code></pre><p>More details can be found here: <a href="https://docs.virtual-flow.org/tutorials/-LdE94b2AVfBFT72zK-v/vfvs-tutorial-1/starting-the-workflow">https://docs.virtual-flow.org/tutorials/-LdE94b2AVfBFT72zK-v/vfvs-tutorial-1/starting-the-workflow</a>.</p><h3 id="monitoring-and-wrapping-up">Monitoring and Wrapping Up</h3><p>In order to monitor the jobs and view the files after completion, I recommend the respective sections of the tutorial: </p><p><a href="https://docs.virtual-flow.org/tutorials/-LdE94b2AVfBFT72zK-v/vfvs-tutorial-1/monitoring-the-workflow">Monitoring</a></p><p><a href="https://docs.virtual-flow.org/tutorials/-LdE94b2AVfBFT72zK-v/vfvs-tutorial-1/the-completed-workflow">Completed Workflow</a></p><h2 id="using-our-own-files">Using our own files</h2><p>Running the same workflow with our own files is pretty straightforward. After we downloaded the template files in the 'Setting up VirtualFlow' step we need to replace the ligand library as well as our target protein. </p><h3 id="replacing-the-ligand-library">Replacing the ligand library</h3><p>The second tutorial in the VirtualFlow documentation has <a href="https://docs.virtual-flow.org/tutorials/-LdE94b2AVfBFT72zK-v/tutorial-2-vfvs-scratch/setting-up-the-workflow#preparing-the-input-files-folder">a section dedicated</a> to this.</p><h3 id="using-a-different-protein">Using a different Protein</h3><p>Here, I downloaded <a href="http://vina.scripps.edu/download.html">AutoDock Vina</a> together with <a href="http://mgltools.scripps.edu/downloads">MGLTools</a> and followed the <a href="http://vina.scripps.edu/tutorial.html">tutorial</a> on <a href="http://vina.scripps.edu/tutorial.html">http://vina.scripps.edu</a> which looks outdated but still works fine. We can use AutoDock Vina to convert our protein from .pbd to .pdbqt and use the 'GridBox' tool to get the necessary parameters for respective receptor config file. </p><pre><code># ../input-files/smina_rigid_receptor1/config.txt
+receptor = ../input-files/receptor/&lt;protein&gt;.pdbqt
+center_x = 28.614
+center_y = 15.838
+center_z = -2.045
+size_x = 36.0
+size_y = 32.0
+size_z = 36.0
+exhaustiveness = 4
+scoring = vinardo
+cpu = 1</code></pre><p>We add our protein to the folder and change both the smina (/input-files/smina_rigid_receptor1) and qvina receptor (/input-files/qvina02_rigid_receptor1) config files. </p><p>That's it. Now we can follow the rest of the steps outlined in the 'VirtualFlow' section above.</p>
+
+            </section>
+
+        </article>
+    </main>
+    <footer class="page-footer">
+            <amp-img class="site-icon" src="https://rmeinl.com/content/images/2021/01/compass_favicon.png" width="50" height="50" layout="fixed"></amp-img>
+        <h3>rmeinl</h3>
+            <p>/ gene regulatory networks / bioelectricity / longevity / machine learning</p>
+        <p><a href="https://rmeinl.com">Read more posts →</a></p>
+        <a class="powered" href="https://ghost.org" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 156 156"><g fill="none" fill-rule="evenodd"><rect fill="#15212B" width="156" height="156" rx="27"/><g transform="translate(36 36)" fill="#F6F8FA"><path d="M0 71.007A4.004 4.004 0 014 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0130 84H4a4 4 0 01-4-4.007v-8.986zM50 71.007A4.004 4.004 0 0154 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0180 84H54a4 4 0 01-4-4.007v-8.986z"/><rect y="34" width="84" height="17" rx="4"/><path d="M0 4.007A4.007 4.007 0 014.007 0h41.986A4.003 4.003 0 0150 4.007v8.986A4.007 4.007 0 0145.993 17H4.007A4.003 4.003 0 010 12.993V4.007z"/><rect x="67" width="17" height="17" rx="4"/></g></g></svg> Published with Ghost</a>
+    </footer>
+    
+</body>
+</html>
