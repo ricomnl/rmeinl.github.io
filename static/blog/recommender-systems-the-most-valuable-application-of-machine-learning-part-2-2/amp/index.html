@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html ⚡>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+    <title>Recommender Systems: The Most Valuable Application of Machine Learning (Part 2)</title>
+
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="canonical" href="https://rmeinl.com/blog/recommender-systems-the-most-valuable-application-of-machine-learning-part-2-2/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    
+    <meta property="og:site_name" content="rmeinl" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Recommender Systems: The Most Valuable Application of Machine Learning (Part 2)" />
+    <meta property="og:description" content="Why Recommender Systems are the most valuable application of Machine Learning and how Machine Learning-driven Recommenders already drive almost every aspect of our lives." />
+    <meta property="og:url" content="https://rmeinl.com/blog/recommender-systems-the-most-valuable-application-of-machine-learning-part-2-2/" />
+    <meta property="og:image" content="https://rmeinl.com/content/images/2021/01/compass_cover.png" />
+    <meta property="article:published_time" content="2020-10-04T20:50:12.000Z" />
+    <meta property="article:modified_time" content="2021-04-25T14:07:49.000Z" />
+    <meta property="article:tag" content="recommender systems" />
+    <meta property="article:tag" content="machine learning" />
+    <meta property="article:tag" content="data science" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Recommender Systems: The Most Valuable Application of Machine Learning (Part 2)" />
+    <meta name="twitter:description" content="Why Recommender Systems are the most valuable application of Machine Learning and how Machine Learning-driven Recommenders already drive almost every aspect of our lives." />
+    <meta name="twitter:url" content="https://rmeinl.com/blog/recommender-systems-the-most-valuable-application-of-machine-learning-part-2-2/" />
+    <meta name="twitter:image" content="https://rmeinl.com/content/images/2021/01/compass_cover.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Rico Meinl" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="recommender systems, machine learning, data science" />
+    <meta name="twitter:site" content="@rmeinl" />
+    <meta name="twitter:creator" content="@rmeinl" />
+    <meta property="og:image:width" content="1640" />
+    <meta property="og:image:height" content="624" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "rmeinl",
+        "url": "https://rmeinl.com/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://rmeinl.com/favicon.png",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Rico Meinl",
+        "url": "https://rmeinl.com/author/rico/",
+        "sameAs": [
+            "https://rmeinl.com",
+            "https://twitter.com/rmeinl"
+        ]
+    },
+    "headline": "Recommender Systems: The Most Valuable Application of Machine Learning (Part 2)",
+    "url": "https://rmeinl.com/blog/recommender-systems-the-most-valuable-application-of-machine-learning-part-2-2/",
+    "datePublished": "2020-10-04T20:50:12.000Z",
+    "dateModified": "2021-04-25T14:07:49.000Z",
+    "keywords": "recommender systems, machine learning, data science",
+    "description": "Why Recommender Systems are the most valuable application of Machine Learning and how Machine Learning-driven Recommenders already drive almost every aspect of our lives.",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://rmeinl.com/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 4.22" />
+    <link rel="alternate" type="application/rss+xml" title="rmeinl" href="https://rmeinl.com/blog/rss/" />
+
+    <style amp-custom>
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    html {
+        overflow-x: hidden;
+        overflow-y: scroll;
+        font-size: 62.5%;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    body {
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        color: #3a4145;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        font-size: 1.7rem;
+        line-height: 1.55em;
+        font-weight: 400;
+        font-style: normal;
+        background: #fff;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    p,
+    ul,
+    ol,
+    li,
+    dl,
+    dd,
+    hr,
+    pre,
+    form,
+    table,
+    video,
+    figure,
+    figcaption,
+    blockquote {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul[class],
+    ol[class] {
+        padding: 0;
+        list-style: none;
+    }
+
+    img {
+        display: block;
+        max-width: 100%;
+    }
+
+    input,
+    button,
+    select,
+    textarea {
+        font: inherit;
+        -webkit-appearance: none;
+    }
+
+    fieldset {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    label {
+        display: block;
+        font-size: 0.9em;
+        font-weight: 700;
+    }
+
+    hr {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid currentcolor;
+        opacity: 0.1;
+    }
+
+    ::selection {
+        text-shadow: none;
+        background: #cbeafb;
+    }
+
+    mark {
+        background-color: #fdffb6;
+    }
+
+    small {
+        font-size: 80%;
+    }
+
+    sub,
+    sup {
+        position: relative;
+        font-size: 75%;
+        line-height: 0;
+        vertical-align: baseline;
+    }
+    sup {
+        top: -0.5em;
+    }
+    sub {
+        bottom: -0.25em;
+    }
+
+    ul li + li {
+        margin-top: 0.6em;
+    }
+
+    a {
+        color: var(--ghost-accent-color, #1292EE);
+        text-decoration-skip-ink: auto;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 0;
+        font-weight: 700;
+        color: #121212;
+        line-height: 1.4em;
+    }
+
+    h1 {
+        font-size: 3.4rem;
+        line-height: 1.1em;
+    }
+
+    h2 {
+        font-size: 2.4rem;
+        line-height: 1.2em;
+    }
+
+    h3 {
+        font-size: 1.8rem;
+    }
+
+    h4 {
+        font-size: 1.7rem;
+    }
+
+    h5 {
+        font-size: 1.6rem;
+    }
+
+    h6 {
+        font-size: 1.6rem;
+    }
+
+    amp-img {
+        height: 100%;
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    amp-img img {
+        object-fit: cover;
+    }
+
+    .page-header {
+        padding: 50px 5vmin 30px;
+        text-align: center;
+        font-size: 2rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .page-header a {
+        color: #121212;
+        font-weight: 700;
+        text-decoration: none;
+        font-size: 1.6rem;
+        letter-spacing: -0.1px;
+    }
+
+    .post {
+        max-width: 680px;
+        margin: 0 auto;
+    }
+
+    .post-header {
+        margin: 0 5vmin 5vmin;
+        text-align: center;
+    }
+
+    .post-meta {
+        margin: 1rem 0 0 0;
+        text-transform: uppercase;
+        color: #738a94;
+        font-weight: 500;
+        font-size: 1.3rem;
+    }
+
+    .post-image {
+        margin: 0 0 5vmin;
+    }
+
+    .post-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .post-content {
+        padding: 0 5vmin;
+    }
+
+    .post-content > * + * {
+        margin-top: 1.5em;
+    }
+
+    .post-content [id]:not(:first-child) {
+        margin: 2em 0 0;
+    }
+
+    .post-content > [id] + * {
+        margin-top: 1rem;
+    }
+
+    .post-content [id] + .kg-card,
+    .post-content blockquote + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content > ul,
+    .post-content > ol,
+    .post-content > dl {
+        padding-left: 1.9em;
+    }
+
+    .post-content hr {
+        margin-top: 40px;
+    }
+
+    .post .post-content hr + * {
+        margin-top: 40px;
+    }
+
+    .post-content amp-img {
+        background-color: #f8f8f8;
+    }
+
+    .post-content blockquote {
+        position: relative;
+        font-style: italic;
+    }
+
+    .post-content blockquote::before {
+        content: "";
+        position: absolute;
+        left: -1.5em;
+        top: 0;
+        bottom: 0;
+        width: 0.3rem;
+        background: var(--ghost-accent-color, #1292EE);
+    }
+
+    .post-content :not(.kg-card):not([id]) + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content .kg-card + :not(.kg-card) {
+        margin-top: 40px;
+    }
+
+    .kg-card figcaption {
+        padding: 1.5rem 1.5rem 0;
+        text-align: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.4em;
+        opacity: 0.6;
+    }
+
+    .kg-card figcaption strong {
+        color: rgba(0,0,0,0.8);
+    }
+
+    .post-content :not(pre) code {
+        vertical-align: middle;
+        padding: 0.15em 0.4em 0.15em;
+        border: #e1eaef 1px solid;
+        font-weight: 400;
+        font-size: 0.9em;
+        line-height: 1em;
+        color: #15171a;
+        background: #f0f6f9;
+        border-radius: 0.25em;
+    }
+
+    .post-content > pre {
+        overflow: scroll;
+        padding: 16px 20px;
+        color: #fff;
+        background: #1F2428;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px -2px rgba(0,0,0,.1), 0 0 1px rgba(0,0,0,.4);
+    }
+
+    .kg-embed-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .kg-image-card img {
+        margin: auto;
+    }
+
+    .kg-gallery-card + .kg-gallery-card {
+        margin-top: 0.75em;
+    }
+
+    .kg-gallery-container {
+        position: relative;
+    }
+
+    .kg-gallery-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .kg-gallery-image {
+        width: 100%;
+        height: 100%;
+    }
+
+    .kg-gallery-row:not(:first-of-type) {
+        margin: 0.75em 0 0 0;
+    }
+
+    .kg-gallery-image:not(:first-of-type) {
+        margin: 0 0 0 0.75em;
+    }
+
+    .kg-bookmark-card,
+    .kg-bookmark-publisher {
+        position: relative;
+    }
+
+    .kg-bookmark-container,
+    .kg-bookmark-container:hover {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row-reverse;
+        color: currentColor;
+        background: rgba(255,255,255,0.6);
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        text-decoration: none;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.4);
+        overflow: hidden;
+    }
+
+    .kg-bookmark-content {
+        flex-basis: 0;
+        flex-grow: 999;
+        padding: 20px;
+        order: 1;
+    }
+
+    .kg-bookmark-title {
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 1.3em;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        max-height: 45px;
+        margin: 0.5em 0 0 0;
+        font-size: 1.4rem;
+        line-height: 1.55em;
+        overflow: hidden;
+        opacity: 0.8;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .kg-bookmark-metadata {
+        margin-top: 20px;
+    }
+
+    .kg-bookmark-metadata {
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.3em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-metadata amp-img {
+        width: 18px;
+        height: 18px;
+        max-width: 18px;
+        max-height: 18px;
+        margin-right: 10px;
+    }
+
+    .kg-bookmark-thumbnail {
+        display: flex;
+        flex-basis: 20rem;
+        flex-grow: 1;
+        justify-content: flex-end;
+    }
+
+    .kg-bookmark-thumbnail amp-img {
+        max-height: 200px;
+    }
+
+    .kg-bookmark-author {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-publisher::before {
+        content: "•";
+        margin: 0 .5em;
+    }
+
+    .kg-nft-card-container {
+        position: relative;
+        display: flex;
+        flex: auto;
+        flex-direction: column;
+        text-decoration: none;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        font-size: 1.4rem;
+        font-weight: 400;
+        box-shadow: 0 2px 6px -2px rgb(0 0 0 / 10%), 0 0 1px rgb(0 0 0 / 40%);
+        width: 100%;
+        max-width: 512px;
+        color: #15212A;
+        background: #fff;
+        border-radius: 5px;
+        transition: none;
+        margin: 0 auto; 
+    }
+
+    .kg-nft-metadata {
+        padding: 2.0rem;
+    }
+
+    .kg-nft-image-container {
+        position: relative;
+    }
+
+    .kg-nft-image {
+        display: flex;
+        border-radius: 5px 5px 0 0;
+    }
+
+    .kg-nft-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .kg-nft-header h4.kg-nft-title {
+        font-size: 1.9rem;
+        font-weight: 700;
+        margin: 0;
+        color: #15212A;
+    }
+
+    .kg-nft-header amp-img {
+        max-width: 114px;
+        max-height: 26px;
+    }
+
+    .kg-nft-opensea-logo {
+        margin-top: 2px;
+        width: 100px;
+    }
+
+    .kg-nft-creator {
+        font-family: inherit;
+        color: #95A1AD;
+    }
+
+    .kg-nft-creator span {
+        font-weight: 500;
+        color: #15212A;
+    }
+
+    .kg-nft-card p.kg-nft-description {
+        font-size: 1.4rem;
+        line-height: 1.4em;
+        margin: 2.0rem 0 0;
+        color: #222;
+    }
+
+    .kg-button-card {
+        display: flex;
+        position: static;
+        align-items: center;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .kg-btn {
+        display: flex;
+        position: static;
+        align-items: center;
+        padding: 0 2.0rem;
+        height: 4.0rem;
+        line-height: 4.0rem;
+        font-size: 1.65rem;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .kg-btn:hover {
+        opacity: 0.85;
+    }
+
+    .kg-btn-accent {
+        background-color: var(--ghost-accent-color, #1292EE);
+        color: #fff;
+    }
+
+    .kg-width-full.kg-card-hascaption {
+        display: grid;
+        grid-template-columns: inherit;
+    }
+
+    .post-content table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .post-content th {
+        padding: 0.5em 0.8em;
+        text-align: left;
+        font-size: .75em;
+        text-transform: uppercase;
+    }
+
+    .post-content td {
+        padding: 0.4em 0.7em;
+    }
+
+    .post-content tbody tr:nth-child(2n + 1) {
+        background-color: rgba(0,0,0,0.1);
+        padding: 1px;
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td:last-child {
+        box-shadow:
+            inset 1px 0 rgba(0,0,0,0.1),
+            inset -1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td {
+        box-shadow: inset 1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:last-child {
+        border-bottom: 1px solid rgba(0,0,0,.1);
+    }
+
+    .page-footer {
+        padding: 60px 5vmin;
+        margin: 60px auto 0;
+        text-align: center;
+        background-color: #f8f8f8;
+    }
+
+    .page-footer h3 {
+        margin: 0.5rem 0 0 0;
+    }
+
+    .page-footer p {
+        max-width: 500px;
+        margin: 1rem auto 1.5rem;
+        font-size: 1.7rem;
+        line-height: 1.5em;
+        color: rgba(0,0,0,0.6)
+    }
+
+    .powered {
+        display: inline-flex;
+        align-items: center;
+        margin: 30px 0 0;
+        padding: 6px 9px 6px 6px;
+        border: rgba(0,0,0,0.1) 1px solid;
+        font-size: 12px;
+        line-height: 12px;
+        letter-spacing: -0.2px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-weight: 500;
+        color: #222;
+        text-decoration: none;
+        background: #fff;
+        border-radius: 6px;
+    }
+
+    .powered svg {
+        height: 16px;
+        width: 16px;
+        margin: 0 6px 0 0;
+    }
+
+    @media (max-width: 600px) {
+        body {
+            font-size: 1.6rem;
+        }
+        h1 {
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+        }
+    }
+
+    @media (max-width: 400px) {
+        h1 {
+            font-size: 2.6rem;
+            line-height: 1.15em;
+        }
+        h2 {
+            font-size: 2rem;
+            line-height: 1.2em;
+        }
+        h3 {
+            font-size: 1.7rem;
+        }
+    }
+
+    :root {--ghost-accent-color: #15171A;}
+    </style>
+
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+    
+
+</head>
+
+<body class="amp-template">
+    <header class="page-header">
+        <a href="https://rmeinl.com">
+                <amp-img class="site-icon" src="https://rmeinl.com/content/images/2021/01/compass_favicon.png" width="50" height="50" layout="fixed"></amp-img>
+        </a>
+    </header>
+
+    <main class="content" role="main">
+        <article class="post">
+
+            <header class="post-header">
+                <h1 class="post-title">Recommender Systems: The Most Valuable Application of Machine Learning (Part 2)</h1>
+                <section class="post-meta">
+                    Rico Meinl -
+                    <time class="post-date" datetime="2020-10-04">04 Oct 2020</time>
+                </section>
+            </header>
+            <section class="post-content">
+
+                <p>Why Recommender Systems are the most valuable application of Machine Learning and how Machine Learning-driven Recommenders already drive almost every aspect of our lives.</p><p><a href="https://towardsdatascience.com/recommender-systems-the-most-valuable-application-of-machine-learning-2bc6903c63ce">Read this article on Medium.</a></p><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://cdn-images-1.medium.com/max/1600/1*F2mBbZRHPXxa3cyg3z8esg.png" class="kg-image" alt width="1071" height="759" layout="responsive"></amp-img><figcaption>Recommender Systems already drive almost every aspect of our daily lives.</figcaption></figure><hr></hr><p>This is the second part of the article published on 11 May. In the first part I covered:</p><ul><li>Business Value</li><li>Problem Formulation</li><li>Data</li><li>Algorithms</li></ul><p>In this second part I will cover the following topics:</p><ul><li>Evaluation Metrics</li><li>User Interface</li><li>Cold-start Problem</li><li>Exploration vs. Exploitation</li><li>The Future of Recommender Systems</li></ul><p>Throughout this article, I will continue to use examples of the companies that have built the most widely used systems over the last couple of years, including Airbnb, Amazon, Instagram, LinkedIn, Netflix, Spotify, Uber Eats, and YouTube.</p><hr></hr><h3 id="evaluation-metrics">Evaluation Metrics</h3><p>Now that we have the algorithm for our Recommender System, we need to find a way to evaluate its performance. As with every Machine Learning model, there are two types of evaluation:</p><ol><li>Offline Evaluation</li><li>Online Evaluation</li></ol><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://cdn-images-1.medium.com/max/1600/1*HjqVASOg7qdIUEafmYK9rg.png" class="kg-image" alt width="1600" height="900" layout="responsive"></amp-img><figcaption>Offline/Online Testing Framework</figcaption></figure><p>Generally speaking, we can consider the Offline Evaluation metrics as <em>low-level</em> metrics, that are usually easily measurable. The most well-known example would be Netflix choosing to use <em>root mean squared error</em> (RMSE) as a proxy metric for their Netflix Prize Challenge. The Online Evaluation metrics are the <em>high-level</em> business metrics that are only measurable as soon as we ship our model into the real world and test it with real users. Some examples include customer retention, click-through rate, or user engagement.</p><h4 id="offline-evaluation">Offline Evaluation</h4><p>As most of the existing Recommender Systems consist of two stages (candidate generation and ranking), we need to pick the right metrics for each stage. For the candidate generation stage,<a href="https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/45530.pdf" rel="noopener"> YouTube</a>, for instance, focuses on <strong>high precision</strong> so <em>“out of all the videos that were pre-selected how many are relevant”</em>. This makes sense given that in the first stage we want to filter for a smaller set of videos whilst making sure all of them are potentially relevant to the user. In the second stage, presenting a few “best” recommendations in a list requires a fine-level representation to distinguish relative importance among candidates with <strong>high recall </strong>(<em>“how many of the relevant videos did we find”</em>)<strong>.</strong></p><p>Often, most of the examples are using the standard evaluation metrics used in the Machine Learning community: from ranking measures, such as normalized discounted cumulative gain, mean reciprocal rank, or fraction of concordant pairs, to classification metrics including accuracy, precision, recall, or F-score.</p><p><a href="https://ai.facebook.com/blog/powered-by-ai-instagrams-explore-recommender-system/" rel="noopener">Instagram formulated</a> the optimization function of their final pass model a little different:</p><blockquote>We predict individual actions that people take on each piece of media, whether they’re positive actions such as like and save, or negative actions such as “See Fewer Posts Like This” (SFPLT). We use a multi-task multi-label (MTML) neural network to predict these events.</blockquote><p>As appealing as offline experiments are, they have a major drawback: they assume that members would have behaved in the same way, for example, playing the same videos, if the new algorithm being evaluated had been used to generate the recommendations. That’s why we need online evaluation to measure the actual impact our model has on the higher-level business metrics.</p><h4 id="online-evaluation">Online Evaluation</h4><p>The approach to be aware of here is A/B testing. There are many interesting and exhaustive articles/<a href="https://www.udacity.com/course/ab-testing--ud257" rel="noopener">courses</a> that cover this well, therefore I won’t spend too much time on this. The only slight variation I have encountered is Netflix’s approach called “Consumer Data Science” that you can<a href="https://netflixtechblog.com/how-we-determine-product-success-980f81f0047e" rel="noopener"> read about it here</a>.</p><p>The most popular high-level metrics that companies are measuring here are <em>Click-Through Rate</em> and <em>Engagement</em>. Uber Eats goes further here and designed a multi-objective tradeoff that<a href="https://eng.uber.com/uber-eats-recommending-marketplace/" rel="noopener"> captures multiple high-level metrics</a> to account for the overall health of their three-sided marketplace (among others: Marketplace Fairness, Gross Bookings, Reliability, Eater Happiness). In addition to medium-term engagement, Netflix focuses on member retention rates as their online tests can<a href="https://dl.acm.org/doi/pdf/10.1145/2843948" rel="noopener"> range from between 2–6 months</a>.</p><p>YouTube famously prioritizes watch-time over click-through rate. They even<a href="https://youtube-creators.googleblog.com/2012/08/youtube-now-why-we-focus-on-watch-time.html" rel="noopener"> wrote an article, explaining why</a>:</p><blockquote>Ranking by click-through rate often promotes deceptive videos that the user does not complete (“clickbait”) whereas watch time better captures engagement</blockquote><h4 id="evaluating-embeddings">Evaluating Embeddings</h4><p>As covered in the section on algorithms, embeddings are a crucial part of the candidate generation stage. However, unlike with a classification or regression model, it’s<a href="https://blog.twitter.com/engineering/en_us/topics/insights/2018/embeddingsattwitter.html" rel="noopener"> notoriously difficult to measure the quality of an embedding</a> given that they are often being used in different contexts. A sanity check we can perform is to map the high-dimensional embedding vector into a lower-dimensional representation (via PCA, t-SNE, or UMAP) or apply clustering techniques such as k-means and then visualize the results. Airbnb did this with their<a href="https://medium.com/airbnb-engineering/listing-embeddings-for-similar-listing-recommendations-and-real-time-personalization-in-search-601172f7603e"> listing embeddings</a> to confirm that listings from similar locations are clustered together.</p><hr></hr><h3 id="user-interface">User Interface</h3><p>For a Machine Learning Engineer or Data Scientist, the probably most overlooked aspect of the equation is the User Interface. The problem is that if your UI does not contain the needed components to showcase the recommendations or showcases them in the wrong context, the feedback loop is inherently flawed.</p><p>Let’s take Linkedin as an example to illustrate this. If I’m browsing through people’s profiles, on the right-hand side of the screen I see recommendations for <em>similar people</em>. When I’m browsing through companies, I see recommendations for <em>similar companies</em>. The recommendations are adapted to my current goals and context and encourage me to keep browsing the site. If the <em>similar companies</em> recommendations would appear on a person’s profile, I would probably be less encouraged to click on their profile as it is not what I am currently looking for.</p><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://cdn-images-1.medium.com/max/1600/1*i-3rNsokIOjyoBRgeiOhvA.png" class="kg-image" alt width="1600" height="808" layout="responsive"></amp-img><figcaption>Similar User Recommendations on Linkedin</figcaption></figure><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://cdn-images-1.medium.com/max/1600/1*A1NpLcH0HG0RrBB3oOTVKA.png" class="kg-image" alt width="1600" height="866" layout="responsive"></amp-img><figcaption>Similar Companies Recommendations on Linkedin</figcaption></figure><p>You can build the best Recommender System in the world, however, if your interface is not designed to serve the user’s needs and wants, no one will appreciate the recommendations. In fact, the User Interface challenge is so crucial that<a href="https://netflixtechblog.com/learning-a-personalized-homepage-aa8ec670359a" rel="noopener"> Netflix turned all components on their website into dynamic ones</a> which are assembled by a Machine Learning algorithm to best reflect the goals of a user.</p><p>Spotify followed that model and <a href="https://labs.spotify.com/2020/01/16/for-your-ears-only-personalizing-spotify-home-with-machine-learning/" rel="noopener">adopted a similar layout for their home screen design</a>, as can be seen below.</p><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://cdn-images-1.medium.com/max/1600/1*ZopV25d9-x1Gma5-YIbkIA.png" class="kg-image" alt width="916" height="508" layout="responsive"></amp-img><figcaption>Personalizing Spotify Home with Machine Learning (Source: <a href="https://www.oreilly.com/radar/personalization-of-spotify-home-and-tensorflow/" data-href="https://www.oreilly.com/radar/personalization-of-spotify-home-and-tensorflow/" class="markup--anchor markup--figure-anchor" rel="noopener" target="_blank">Spotify</a>)</figcaption></figure><p>This is an ongoing area where there is still a lot of experimentation. As an example, YouTube recently changed their homepage interface to enable users to narrow down the recommendations for different topics:</p><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://cdn-images-1.medium.com/max/1600/1*Edcu3SHtcLuF5aZqI1N_rw.png" class="kg-image" alt width="1600" height="738" layout="responsive"></amp-img><figcaption>New YouTube Home Page</figcaption></figure><hr></hr><h3 id="cold-start-problem">Cold-start Problem</h3><p>The<a href="https://en.wikipedia.org/wiki/Cold_start_%28computing%29" rel="noopener"> cold-start problem</a> is often seen in Recommender Systems because methods such as collaborative filtering rely heavily on past user-item interactions. Companies are confronted with the cold-start problem in two ways: user and item cold-start. Depending on the type of platform, either one of them is more prevalent.</p><h4 id="user-cold-start">User cold-start</h4><p>Imagine a new member signs up for Netflix. At this point, the company doesn’t know anything about the new members’ preferences. How does the company keep her engaged by providing great recommendations?</p><p>In Netflix’s case, new members get a one-month free trial, during which cancellation rates are the highest while they decrease quickly after that. This is why any improvements to the cold-start problem present an immense business opportunity for Netflix, in order to increase engagement and retention in those first 30 days. Today, their members are given a survey during the sign-up process, during which they are asked to select videos from an algorithmically populated set that is then used as an input into all of their algorithms.</p><h4 id="item-cold-start">Item cold-start</h4><p>Companies face a similar challenge when new items or content are added to the catalog. Platforms like Netflix or Prime Video hold an existing catalog of media items that changes less frequently (it takes time to create movies or series!), therefore they struggle less with this. On the contrary, on Airbnb or Zillow, new listings are created every day and at that point, they do not have an embedding as they were not present during the training process. Airbnb solves this the following way:</p><blockquote>To create embeddings for a new listing we find 3 geographically closest listings that do have embeddings, and are of same listing type and price range as the new listing, and calculate their mean vector.</blockquote><p>For Zillow, this is especially critical as some of the new home listings might only be on the site for a couple of days. They<a href="https://www.zillow.com/tech/embedding-similar-home-recommendation/" rel="noopener"> creatively solved this problem</a> by creating a neural network-based mapping function from the content space to the embedding space, which is guided by the engagement data from users during the learning phase. This allows them to map a new home listing to the learned embedding space just by using its features.</p><hr></hr><h3 id="exploration-vs-exploitation">Exploration vs. Exploitation</h3><p>The concept of exploration/exploitation can be seen as the balancing of new content with well-established content. I was going to illustrate this concept myself, while I found this great excerpt that hits it right out of the ballpark:</p><blockquote>“Imagine you’ve just entered an ice cream shop. You now face a crucial decision — out of about 30 flavors you need to choose only one!<br />You can go with two strategies: either go with that favorite flavor of yours that you already know is the best; or explore new flavors you never tried before, and maybe find a new best flavor.<br />These two strategies — exploitation and exploration — can also be used when recommending content. We can either exploit items that have high click-through rate with high certainty — maybe because these items have been shown thousands of times to similar users, or we can explore new items we haven’t shown to many users in the past. Incorporating exploration into your recommendation strategy is crucial — without it, new items don’t stand a chance against older, more familiar ones.”</blockquote><p><em>(Source: </em><a href="https://anotherdatum.com/exploration-exploitation.html" rel="noopener"><em>Recommender Systems: Exploring the Unknown Using Uncertainty</em></a><em>)</em></p><p>This tradeoff is a typical reinforcement learning problem and a commonly used approach is the multi-armed bandit algorithm. This is used by Spotify for the<a href="http://sigir.org/afirm2019/slides/16.%20Friday%20-%20Music%20Recommendation%20at%20Spotify%20-%20Ben%20Carterette.pdf" rel="noopener"> personalization of each users’ home page</a> as well as Uber Eats for personalized recommendations<a href="https://eng.uber.com/uber-eats-recommending-marketplace/" rel="noopener"> optimized for their three-sided marketplace</a>. Two scientists at Netflix gave a great talk about how they are<a href="https://www.youtube.com/watch?v=kY-BCNHd_dM" rel="noopener"> using the MAB framework for movie recommendations</a>.</p><p>Though I should mention that this is, by no means, the final solution to this problem, it seems to work for Netflix, Spotify, and Uber Eats, right?</p><p>Yes. But!</p><p>Netflix has roughly 160 million users and about 6.000 movies/shows. Spotify has about 230 million users and 50 million songs + 500.000 podcasts.</p><p>Twitter’s 330 million active users generate more than <strong><em>500 million tweets</em></strong> per day (350.000 tweets per minute, 6.000 tweets per second). And then there’s YouTube, with its <strong><em>300 hours of videos</em></strong> uploaded every minute!</p><p>The exploration space in the two latter cases is a <em>little</em> bit bigger than in the case of Netflix or Uber Eats, which makes the problem a lot more challenging.</p><hr></hr><h3 id="the-future-of-recommender-systems">The Future of Recommender Systems</h3><p>This is the end of my little survey over Recommender Systems. As we have observed, Recommender Systems already guide so many aspects of our life. All the algorithms we covered over the course of these two articles are competing for our attention every day. And after all, they are all maximizing the time spent on their platform. As I illustrated in the section on Evaluation methods, most of the algorithms are optimizing for something like Click-through rate, engagement, or in YouTube’s case: watch time.</p><p><strong><em>What does that mean for us as a consumer?</em></strong></p><p>What it means is, that we are not in control of our desires anymore. While this might sound poetic, think about it. Let’s look at YouTube; we all have goals when coming to the site. We might want to listen to music, watch something funny, or learn something new. But all the content that is recommended to us (either through the Home Page recommendations, Search Ranking, or Watch Next) is optimized to keep us on the site for longer.</p><p>Lex Fridman and François Chollet had a<a href="https://www.youtube.com/watch?v=Bo8MY4JpiXE" rel="noopener"> great conversation about this</a> on the Artificial Intelligence Podcast. Instead of choosing the metric to optimize for, what if companies would put the user in charge of choosing their own objective function? What if they would take the personal goals of the user’s profile into account and ask the user, what do you want to achieve? Right now, this technology is almost like our boss and we’re not in control of it. Wouldn’t it be incredible to leverage the power of Recommender Systems to be more like a mentor, a coach, or an assistant?</p><p>Imagine, as a consumer, you could ask YouTube to optimize the content to maximize learning outcomes. The technology is certainly already there. The challenge would really lie in aligning this with the existing business models and designing the right interface to empower the user to make that choice, and also to change as their goals evolve. With its new interface, YouTube is perhaps already taking baby-steps in that direction by putting the user in charge to select categories that she wants to see recommendations for. But this is just the beginning.</p><p>Could this be the way forward or is this just a consumer’s dream?</p><hr></hr><p><strong><em>Resources</em></strong></p><p><a href="https://www.youtube.com/watch?v=Bo8MY4JpiXE" rel="noopener">François Chollet: Keras, Deep Learning, and the Progress of AI | Artificial Intelligence Podcast</a></p><p><a href="https://medium.com/airbnb-engineering/listing-embeddings-for-similar-listing-recommendations-and-real-time-personalization-in-search-601172f7603e" rel="noopener">Airbnb — Listing Embeddings in Search Ranking</a></p><p><a href="https://medium.com/airbnb-engineering/machine-learning-powered-search-ranking-of-airbnb-experiences-110b4b1a0789" rel="noopener">Airbnb — Machine Learning-Powered Search Ranking of Airbnb Experiences</a></p><p><a href="https://www.cs.umd.edu/~samir/498/Amazon-Recommendations.pdf" rel="noopener nofollow noopener noopener">Amazon — Amazon.com Recommendations Item-to-Item Collaborative Filtering</a></p><p><a href="https://www.amazon.science/the-history-of-amazons-recommendation-algorithm" rel="noopener nofollow noopener noopener">Amazon — The history of Amazon’s recommendation algorithm</a></p><p><a href="https://ai.facebook.com/blog/powered-by-ai-instagrams-explore-recommender-system/" rel="noopener nofollow noopener noopener">Instagram — Powered by AI: Instagram’s Explore recommender system</a></p><p><a href="https://ls13-www.cs.tu-dortmund.de/homepage/rsweb2014/papers/rsweb2014_submission_3.pdf" rel="noopener nofollow noopener noopener">LinkedIn — The Browsemaps: Collaborative Filtering at LinkedIn</a></p><p><a href="https://netflixtechblog.com/netflix-recommendations-beyond-the-5-stars-part-1-55838468f429" rel="noopener nofollow noopener noopener">Netflix — Netflix Recommendations: Beyond the 5 stars (Part 1)</a></p><p><a href="https://netflixtechblog.com/netflix-recommendations-beyond-the-5-stars-part-2-d9b96aa399f5" rel="noopener nofollow noopener noopener">Netflix — Netflix Recommendations: Beyond the 5 stars (Part 2)</a></p><p><a href="https://dl.acm.org/doi/pdf/10.1145/2843948" rel="noopener nofollow noopener noopener">Netflix — The Netflix Recommender System: Algorithms, Business Value, and Innovation</a></p><p><a href="https://netflixtechblog.com/learning-a-personalized-homepage-aa8ec670359a" rel="noopener nofollow noopener noopener">Netflix — Learning a Personalized Homepage</a></p><p><a href="https://pdfs.semanticscholar.org/f635/6c70452b3f56dc1ae07b4649a80239afb1b6.pdf" rel="noopener nofollow noopener noopener">Pandora — Pandora’s Music Recommender</a></p><p><a href="https://medium.com/s/story/spotifys-discover-weekly-how-machine-learning-finds-your-new-music-19a41ab76efe" rel="noopener">Spotify — Discover Weekly: How Does Spotify Know You So Well?</a></p><p><a href="https://labs.spotify.com/2020/01/16/for-your-ears-only-personalizing-spotify-home-with-machine-learning/" rel="noopener nofollow noopener noopener">Spotify — For Your Ears Only: Personalizing Spotify Home with Machine Learning</a></p><p><a href="https://www.slideshare.net/MrChrisJohnson/from-idea-to-execution-spotifys-discover-weekly/31-1_0_0_0_1" rel="noopener nofollow noopener noopener">Spotify — From Idea to Execution: Spotify’s Discover Weekly</a></p><p><a href="https://blog.twitter.com/engineering/en_us/topics/insights/2018/embeddingsattwitter.html" rel="noopener nofollow noopener noopener">Twitter — Embeddings@Twitter</a></p><p><a href="https://eng.uber.com/uber-eats-recommending-marketplace/" rel="noopener nofollow noopener noopener">Uber Eats — Food Discovery with Uber Eats: Recommending for the Marketplace</a></p><p><a href="https://eng.uber.com/uber-eats-graph-learning/" rel="noopener nofollow noopener noopener">Uber Eats — Food Discovery with Uber Eats: Using Graph Learning to Power Recommendations</a></p><p><a href="https://www.inf.unibz.it/~ricci/ISR/papers/p293-davidson.pdf" rel="noopener nofollow noopener noopener">YouTube — The YouTube Video Recommendation System</a></p><p><a href="https://arxiv.org/pdf/1409.2944.pdf" rel="noopener nofollow noopener noopener">YouTube — Collaborative Deep Learning for Recommender Systems</a></p><p><a href="https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/45530.pdf" rel="noopener nofollow noopener noopener">YouTube — Deep Neural Networks for YouTube Recommendations</a></p><p><a href="https://www.zillow.com/tech/embedding-similar-home-recommendation/" rel="noopener nofollow noopener noopener">Zillow — Home Embeddings for Similar Home Recommendations</a></p><p><a href="https://www.youtube.com/watch?v=giIXNoiqO_U&amp;list=PL-6SiIrhTAi6x4Oq28s7yy94ubLzVXabj" rel="noopener nofollow noopener noopener">Andrew Ng’s Machine Learning Course (Recommender Systems)</a></p><p><a href="https://developers.google.com/machine-learning/crash-course/embeddings/video-lecture" rel="noopener nofollow noopener noopener">Google’s Machine Learning Crash Course — Embeddings</a></p><hr></hr>
+
+            </section>
+
+        </article>
+    </main>
+    <footer class="page-footer">
+            <amp-img class="site-icon" src="https://rmeinl.com/content/images/2021/01/compass_favicon.png" width="50" height="50" layout="fixed"></amp-img>
+        <h3>rmeinl</h3>
+            <p>/ gene regulatory networks / bioelectricity / longevity / machine learning</p>
+        <p><a href="https://rmeinl.com">Read more posts →</a></p>
+        <a class="powered" href="https://ghost.org" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 156 156"><g fill="none" fill-rule="evenodd"><rect fill="#15212B" width="156" height="156" rx="27"/><g transform="translate(36 36)" fill="#F6F8FA"><path d="M0 71.007A4.004 4.004 0 014 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0130 84H4a4 4 0 01-4-4.007v-8.986zM50 71.007A4.004 4.004 0 0154 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0180 84H54a4 4 0 01-4-4.007v-8.986z"/><rect y="34" width="84" height="17" rx="4"/><path d="M0 4.007A4.007 4.007 0 014.007 0h41.986A4.003 4.003 0 0150 4.007v8.986A4.007 4.007 0 0145.993 17H4.007A4.003 4.003 0 010 12.993V4.007z"/><rect x="67" width="17" height="17" rx="4"/></g></g></svg> Published with Ghost</a>
+    </footer>
+    
+</body>
+</html>

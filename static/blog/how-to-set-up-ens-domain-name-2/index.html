@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>How to set up your own ENS domain name</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=Raleway:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&display=swap">
+    <link rel="stylesheet" href="/assets/built/screen.css?v=cdf0390862">
+
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="canonical" href="https://rmeinl.com/blog/how-to-set-up-ens-domain-name-2/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="https://rmeinl.com/blog/how-to-set-up-ens-domain-name-2/amp/" />
+    
+    <meta property="og:site_name" content="rmeinl" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to set up your own ENS domain name" />
+    <meta property="og:description" content="This is a short tutorial on how to set up your own ENS domain name using MetaMask and Google Chrome." />
+    <meta property="og:url" content="https://rmeinl.com/blog/how-to-set-up-ens-domain-name-2/" />
+    <meta property="og:image" content="https://rmeinl.com/content/images/2021/01/compass_cover.png" />
+    <meta property="article:published_time" content="2021-04-25T16:11:36.000Z" />
+    <meta property="article:modified_time" content="2021-04-25T16:35:49.000Z" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="How to set up your own ENS domain name" />
+    <meta name="twitter:description" content="This is a short tutorial on how to set up your own ENS domain name using MetaMask and Google Chrome." />
+    <meta name="twitter:url" content="https://rmeinl.com/blog/how-to-set-up-ens-domain-name-2/" />
+    <meta name="twitter:image" content="https://rmeinl.com/content/images/2021/01/compass_cover.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Rico Meinl" />
+    <meta name="twitter:site" content="@rmeinl" />
+    <meta name="twitter:creator" content="@rmeinl" />
+    <meta property="og:image:width" content="1640" />
+    <meta property="og:image:height" content="624" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "rmeinl",
+        "url": "https://rmeinl.com/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://rmeinl.com/favicon.png",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Rico Meinl",
+        "url": "https://rmeinl.com/author/rico/",
+        "sameAs": [
+            "https://rmeinl.com",
+            "https://twitter.com/rmeinl"
+        ]
+    },
+    "headline": "How to set up your own ENS domain name",
+    "url": "https://rmeinl.com/blog/how-to-set-up-ens-domain-name-2/",
+    "datePublished": "2021-04-25T16:11:36.000Z",
+    "dateModified": "2021-04-25T16:35:49.000Z",
+    "description": "This is a short tutorial on how to set up your own ENS domain name using MetaMask and Google Chrome.",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://rmeinl.com/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 4.22" />
+    <link rel="alternate" type="application/rss+xml" title="rmeinl" href="https://rmeinl.com/blog/rss/" />
+    <script defer src="https://unpkg.com/@tryghost/portal@~1.12.0/umd/portal.min.js" data-ghost="https://rmeinl.com/" crossorigin="anonymous"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
+.gh-post-upgrade-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.gh-post-upgrade-cta-content {
+    border-radius: 8px;
+    padding: 40px 4vw;
+}
+
+.gh-post-upgrade-cta h2 {
+    color: #ffffff;
+    font-size: 28px;
+    letter-spacing: -0.2px;
+    margin: 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta p {
+    margin: 20px 0 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta small {
+    font-size: 16px;
+    letter-spacing: -0.2px;
+}
+
+.gh-post-upgrade-cta a {
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a:hover {
+    color: #ffffff;
+    opacity: 0.8;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a.gh-btn {
+    display: block;
+    background: #ffffff;
+    text-decoration: none;
+    margin: 28px 0 0;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.gh-post-upgrade-cta a.gh-btn:hover {
+    opacity: 0.92;
+}</style>
+    <script async src="/public/cards.min.js?v=cdf0390862"></script>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=cdf0390862">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-73VB9DC17E"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-73VB9DC17E');
+</script><style>:root {--ghost-accent-color: #15171A;}</style>
+</head>
+
+<body class="post-template">
+    <div class="gh-site">
+        <header id="gh-head" class="gh-head gh-outer">
+            <div class="gh-head-inner">
+                <div class="gh-head-brand">
+                    <div class="gh-head-brand-wrapper">
+                        <a class="gh-head-logo" href="https://rmeinl.com">
+                                rmeinl
+                        </a>
+
+                        <span class="gh-head-description">/ gene regulatory networks / bioelectricity / longevity / machine learning</span>
+                    </div>
+                    <button class="gh-burger"></button>
+                </div>
+
+                <nav class="gh-head-menu">
+                    <ul class="nav">
+    <li class="nav-home"><a href="https://rmeinl.com/">Home</a></li>
+    <li class="nav-about-me"><a href="https://rmeinl.com/about-me/">About me</a></li>
+    <li class="nav-blog nav-current-parent"><a href="https://rmeinl.com/blog/">Blog</a></li>
+    <li class="nav-recommended"><a href="https://rmeinl.com/recommended/">Recommended</a></li>
+    <li class="nav-projects"><a href="https://rmeinl.com/projects/">Projects</a></li>
+</ul>
+
+                </nav>
+
+            </div>
+        </header>
+
+        
+
+<main id="gh-main" class="gh-main">
+    <article class="gh-article post no-image">
+        <header class="gh-article-header gh-canvas">
+        <div class="gh-article-meta">
+            <time class="gh-article-date" datetime="2021-04-25">Apr 25, 2021</time>
+        </div>
+
+    <h1 class="gh-article-title">How to set up your own ENS domain name</h1>
+
+        <p class="gh-article-excerpt">This is a short tutorial on how to set up your own ENS domain name using MetaMask and Google Chrome.</p>
+</header>
+
+
+<section class="gh-content gh-canvas">
+    <p>This is a short tutorial on how to set up your own ENS domain name using MetaMask and Google Chrome. Normally I'm using Brave but I thought doing the demos in Chrome would allow more people to access it.</p><ol><li>Go to https://ens.domains/ and click <strong>Launch App</strong>.</li></ol><figure class="kg-card kg-image-card"><img src="https://rmeinl.com/content/images/2021/04/1-launch-1.gif" class="kg-image" alt loading="lazy"></figure><p>2. Enter the name you are planning to register. It can end with .eth but doesn't have to.</p><figure class="kg-card kg-image-card"><img src="https://rmeinl.com/content/images/2021/04/2-search-name-1.gif" class="kg-image" alt loading="lazy" width="2000" height="1100"></figure><p>3. Now we have to connect ENS to an Ethereum account. Though they offer multiple ways to connect your wallet (as shown below) we are going to use MetaMask for this tutorial. If you already have a MetaMask account set up, you can jump straight to step 10.</p><figure class="kg-card kg-image-card"><img src="https://rmeinl.com/content/images/2021/04/3-connect-wallet.gif" class="kg-image" alt loading="lazy" width="2000" height="1100"></figure><p>4. In order to download MetaMask, go to <a href="https://metamask.io/download.html">https://metamask.io/download.html</a> and press <strong>Install MetaMask for Chrome</strong>. You'll be redirected to the Chrome Web Store.</p><figure class="kg-card kg-image-card"><img src="https://rmeinl.com/content/images/2021/04/4-metamask-chrome.gif" class="kg-image" alt loading="lazy" width="2000" height="1100"></figure><p>5. Next, add MetaMask to Chrome by pressing <strong>Add to Chrome</strong>. After installation, you'll be redirected to the setup screen. </p><figure class="kg-card kg-image-card"><img src="https://rmeinl.com/content/images/2021/04/5-add-metamask-chrome.gif" class="kg-image" alt loading="lazy" width="2000" height="1100"></figure><p>6. Press <strong>Get Started</strong> and <strong>Create a Wallet</strong> unless you already have one. </p><figure class="kg-card kg-image-card"><img src="https://rmeinl.com/content/images/2021/04/6-metamask-get-started.gif" class="kg-image" alt loading="lazy"></figure><p>7. Create a password for your wallet.</p><figure class="kg-card kg-image-card"><img src="https://rmeinl.com/content/images/2021/04/7-create-password.gif" class="kg-image" alt loading="lazy" width="2000" height="1100"></figure><p>8. Store your <strong>secret</strong> backup phrase in a safe place. It makes it easy to back up and restore your account. (The only reason I'm showing my phrase is because I'm using a throwaway account for this tutorial. You should never show it to anyone.)</p><figure class="kg-card kg-image-card"><img src="https://rmeinl.com/content/images/2021/04/8-backup-phrase.gif" class="kg-image" alt loading="lazy"></figure><p>9. You're all set. You should now see a page with your MetaMask account like this.</p><figure class="kg-card kg-image-card"><img src="https://rmeinl.com/content/images/2021/04/9-account.png" class="kg-image" alt loading="lazy" width="2000" height="1213" srcset="https://rmeinl.com/content/images/size/w600/2021/04/9-account.png 600w, https://rmeinl.com/content/images/size/w1000/2021/04/9-account.png 1000w, https://rmeinl.com/content/images/size/w1600/2021/04/9-account.png 1600w, https://rmeinl.com/content/images/size/w2400/2021/04/9-account.png 2400w" sizes="(min-width: 720px) 720px"></figure><p>10. Now that MetaMask is all set up, switch back to the ENS tab and click <strong>Connect </strong>to connect with your wallet. It'll open the same window as in step 3, but it should also include MetaMask now. You might have to refresh your browser.</p><figure class="kg-card kg-image-card"><img src="https://rmeinl.com/content/images/2021/04/10-connect-wallet.gif" class="kg-image" alt loading="lazy"></figure><p>11. Click <strong>MetaMask </strong>and select the account you want to authenticate with. Click <strong>Next</strong> and finally <strong>Connect</strong>. On the left side next to the ENS domain name you should now see that your account is connected to the mainnet.</p><figure class="kg-card kg-image-card"><img src="https://rmeinl.com/content/images/2021/04/11-init-metamask.gif" class="kg-image" alt loading="lazy" width="2000" height="1100"></figure><p>12. In order to pay for the domain name you need to add some Ether to your account. The fastest way to do that is a direct deposit as shown below. Go to <strong>Buy</strong> &gt; <strong>Directly Deposit Ether </strong> &gt; <strong>View Account </strong>to get your MetaMask Ether address. Use the wallet of your choice to send Ether to this account. It could take up to 10 minutes for your funds to arrive.</p><figure class="kg-card kg-image-card"><img src="https://rmeinl.com/content/images/2021/04/12-deposit-eth.gif" class="kg-image" alt loading="lazy"></figure><p>13. Click on the domain name you want to register and select the number of years you want to reserve it for (2+ years are recommended, given the gas fees). There are three steps in total as listed on the website.</p><figure class="kg-card kg-image-card"><img src="https://rmeinl.com/content/images/2021/04/13-register-years.gif" class="kg-image" alt loading="lazy"></figure><figure class="kg-card kg-image-card"><img src="https://rmeinl.com/content/images/2021/04/14-three-steps.png" class="kg-image" alt loading="lazy" width="2000" height="282" srcset="https://rmeinl.com/content/images/size/w600/2021/04/14-three-steps.png 600w, https://rmeinl.com/content/images/size/w1000/2021/04/14-three-steps.png 1000w, https://rmeinl.com/content/images/size/w1600/2021/04/14-three-steps.png 1600w, https://rmeinl.com/content/images/size/w2400/2021/04/14-three-steps.png 2400w" sizes="(min-width: 720px) 720px"></figure><p>14. <strong>Request to register</strong>: Your wallet will open and you will be asked to confirm the first of two transactions required for registration.</p><figure class="kg-card kg-image-card"><img src="https://rmeinl.com/content/images/2021/04/14-request-to-register.gif" class="kg-image" alt loading="lazy"></figure><p>15. <strong>Wait for 1 minute</strong>: The waiting period is required to ensure another person hasn’t tried to register the same name and protect you after your request. Afterward, your screen should look like this.</p><figure class="kg-card kg-image-card"><img src="https://rmeinl.com/content/images/2021/04/15-wait-for-1-minute.png" class="kg-image" alt loading="lazy" width="2000" height="1220" srcset="https://rmeinl.com/content/images/size/w600/2021/04/15-wait-for-1-minute.png 600w, https://rmeinl.com/content/images/size/w1000/2021/04/15-wait-for-1-minute.png 1000w, https://rmeinl.com/content/images/size/w1600/2021/04/15-wait-for-1-minute.png 1600w, https://rmeinl.com/content/images/size/w2400/2021/04/15-wait-for-1-minute.png 2400w" sizes="(min-width: 720px) 720px"></figure><p>16. <strong>Complete Registration</strong>: Click <strong>Register</strong> and your wallet will re-open. Only after the 2nd transaction is confirmed you'll know if you got the name. This could take up to 10 minutes. As you can see, this transaction cost me about $50 in total but the gas fees are variable so it might be more or less depending on when you submit yours.</p><figure class="kg-card kg-image-card"><img src="https://rmeinl.com/content/images/2021/04/16-complete-registration.gif" class="kg-image" alt loading="lazy"></figure><p>17. After the registration is completed, you should see the name show up under <strong>My Account</strong>.</p><figure class="kg-card kg-image-card"><img src="https://rmeinl.com/content/images/2021/04/17-my-account.png" class="kg-image" alt loading="lazy" width="2000" height="1220" srcset="https://rmeinl.com/content/images/size/w600/2021/04/17-my-account.png 600w, https://rmeinl.com/content/images/size/w1000/2021/04/17-my-account.png 1000w, https://rmeinl.com/content/images/size/w1600/2021/04/17-my-account.png 1600w, https://rmeinl.com/content/images/size/w2400/2021/04/17-my-account.png 2400w" sizes="(min-width: 720px) 720px"></figure><p>18. Click <strong>Reverse record: not set</strong>. Select your ENS name then click <strong>Save</strong>, and submit the transaction to save it on the blockchain.</p><figure class="kg-card kg-image-card"><img src="https://rmeinl.com/content/images/2021/04/18-reverse-record.gif" class="kg-image" alt loading="lazy"></figure><p>19. After about 10 minutes you should see that your reverse record has been set up successfully.</p><figure class="kg-card kg-image-card"><img src="https://rmeinl.com/content/images/2021/04/19-record-success.png" class="kg-image" alt loading="lazy" width="2000" height="1220" srcset="https://rmeinl.com/content/images/size/w600/2021/04/19-record-success.png 600w, https://rmeinl.com/content/images/size/w1000/2021/04/19-record-success.png 1000w, https://rmeinl.com/content/images/size/w1600/2021/04/19-record-success.png 1600w, https://rmeinl.com/content/images/size/w2400/2021/04/19-record-success.png 2400w" sizes="(min-width: 720px) 720px"></figure><p>20. In order to add some records, click on your name in the list below. You should see that it already points to your Ethereum address. Click on <strong>Add/Edit Record</strong>. I'm going to add my BTC address, my website and twitter as well as github handle.</p><figure class="kg-card kg-image-card"><img src="https://rmeinl.com/content/images/2021/04/20-set-records.gif" class="kg-image" alt loading="lazy"></figure><p>21. Finally, confirm the transaction and submit it to the blockchain via MetaMask. This should take another 10 minutes.</p><figure class="kg-card kg-image-card"><img src="https://rmeinl.com/content/images/2021/04/21-confirm-transaction.gif" class="kg-image" alt loading="lazy"></figure><p>22. That's it! You can now use a browser like Opera or Brave to check whether everything worked out. I'm using Brave here, which will initially ask for confirmation to redirect via ENS. You should then see your record. If you neither have Brave or Opera, just go to <a href="https://app.ens.domains/name/rmeinl.eth">https://app.ens.domains/name/&lt;your_domain&gt;.eth</a></p><figure class="kg-card kg-image-card"><img src="https://rmeinl.com/content/images/2021/04/22-confirm.gif" class="kg-image" alt loading="lazy"></figure><hr><p>We just walked through how to set up your own ENS domain name using MetaMask and Chrome. To give you a rough idea about the costs, the whole process cost me $97.86. Here's the breakdown: </p><ul><li>$6.17 for step 14 (initial request)</li><li>$46.26 for step 16 (paying for the name)</li><li>$21.48 for step 18 (setting up the reverse record)</li><li>$23.95 for step 21 (adding custom records)</li></ul><p>Obviously the majority of these costs are gas fees, you only pay ENS for step 16 so it will vary for you depending on when you set up yours.</p><p>Hope this was helpful!</p>
+</section>
+
+    <footer class="gh-article-footer gh-canvas">
+        <nav class="gh-navigation">
+            <div class="gh-navigation-previous">
+                    <a class="gh-navigation-link u-hover reverse" href="/blog/how-to-set-up-ens-domain-name/">
+                        <span class="u-hover-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor">
+    <path d="M20.547 22.107L14.44 16l6.107-6.12L18.667 8l-8 8 8 8 1.88-1.893z"></path>
+</svg>
+</span>
+                        <span class="u-hover-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor">
+    <path d="M20.547 22.107L14.44 16l6.107-6.12L18.667 8l-8 8 8 8 1.88-1.893z"></path>
+</svg>
+</span>
+                        Previous<span class="gh-navigation-hide">&nbsp;issue</span>
+                    </a>
+            </div>
+
+            <a class="gh-navigation-middle" href="/page/2"><span>Browse</span> all issues</a>
+
+            <div class="gh-navigation-next">
+                    <a class="gh-navigation-link u-hover" href="/blog/open-source-bio-chem-informatics/">
+                        Next<span class="gh-navigation-hide">&nbsp;issue</span>
+                        <span class="u-hover-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor">
+    <path d="M11.453 22.107L17.56 16l-6.107-6.12L13.333 8l8 8-8 8-1.88-1.893z"></path>
+</svg></span>
+                        <span class="u-hover-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor">
+    <path d="M11.453 22.107L17.56 16l-6.107-6.12L13.333 8l8 8-8 8-1.88-1.893z"></path>
+</svg></span>
+                    </a>
+            </div>
+        </nav>
+    </footer>
+    </article>
+</main>
+
+
+
+
+        <footer class="gh-foot gh-outer">
+            <div class="gh-foot-inner gh-inner">
+                <div class="gh-copyright">
+                    rmeinl © 2021
+                </div>
+
+                <nav class="gh-foot-menu">
+                    
+                </nav>
+
+                <div class="gh-powered-by">
+                    <a href="https://ghost.org/" target="_blank" rel="noopener">Powered by Ghost</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+        <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+    <script src="/assets/built/main.min.js?v=cdf0390862"></script>
+
+    
+</body>
+
+</html>

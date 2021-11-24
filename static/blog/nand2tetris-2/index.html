@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The 80/20 Computer Science Degree</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=Raleway:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&display=swap">
+    <link rel="stylesheet" href="/assets/built/screen.css?v=cdf0390862">
+
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="canonical" href="https://rmeinl.com/blog/nand2tetris-2/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="https://rmeinl.com/blog/nand2tetris-2/amp/" />
+    
+    <meta property="og:site_name" content="rmeinl" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="The 80/20 Computer Science Degree" />
+    <meta property="og:description" content="Nand to Tetris was created by two CS professors, Noam Nisan and Shimon Schocken. In a nutshell, you&#x27;ll build your own computer in a bottom-up fashion all the way up from NAND gates." />
+    <meta property="og:url" content="https://rmeinl.com/blog/nand2tetris-2/" />
+    <meta property="og:image" content="https://rmeinl.com/content/images/2021/01/compass_cover.png" />
+    <meta property="article:published_time" content="2021-03-30T22:12:56.000Z" />
+    <meta property="article:modified_time" content="2021-04-25T14:07:03.000Z" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="The 80/20 Computer Science Degree" />
+    <meta name="twitter:description" content="Nand to Tetris was created by two CS professors, Noam Nisan and Shimon Schocken. In a nutshell, you&#x27;ll build your own computer in a bottom-up fashion all the way up from NAND gates." />
+    <meta name="twitter:url" content="https://rmeinl.com/blog/nand2tetris-2/" />
+    <meta name="twitter:image" content="https://rmeinl.com/content/images/2021/01/compass_cover.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Rico Meinl" />
+    <meta name="twitter:site" content="@rmeinl" />
+    <meta name="twitter:creator" content="@rmeinl" />
+    <meta property="og:image:width" content="1640" />
+    <meta property="og:image:height" content="624" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "rmeinl",
+        "url": "https://rmeinl.com/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://rmeinl.com/favicon.png",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Rico Meinl",
+        "url": "https://rmeinl.com/author/rico/",
+        "sameAs": [
+            "https://rmeinl.com",
+            "https://twitter.com/rmeinl"
+        ]
+    },
+    "headline": "The 80/20 Computer Science Degree",
+    "url": "https://rmeinl.com/blog/nand2tetris-2/",
+    "datePublished": "2021-03-30T22:12:56.000Z",
+    "dateModified": "2021-04-25T14:07:03.000Z",
+    "description": "Nand to Tetris was created by two CS professors, Noam Nisan and Shimon Schocken. In a nutshell, you&#x27;ll build your own computer in a bottom-up fashion all the way up from NAND gates. ",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://rmeinl.com/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 4.22" />
+    <link rel="alternate" type="application/rss+xml" title="rmeinl" href="https://rmeinl.com/blog/rss/" />
+    <script defer src="https://unpkg.com/@tryghost/portal@~1.12.0/umd/portal.min.js" data-ghost="https://rmeinl.com/" crossorigin="anonymous"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
+.gh-post-upgrade-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.gh-post-upgrade-cta-content {
+    border-radius: 8px;
+    padding: 40px 4vw;
+}
+
+.gh-post-upgrade-cta h2 {
+    color: #ffffff;
+    font-size: 28px;
+    letter-spacing: -0.2px;
+    margin: 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta p {
+    margin: 20px 0 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta small {
+    font-size: 16px;
+    letter-spacing: -0.2px;
+}
+
+.gh-post-upgrade-cta a {
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a:hover {
+    color: #ffffff;
+    opacity: 0.8;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a.gh-btn {
+    display: block;
+    background: #ffffff;
+    text-decoration: none;
+    margin: 28px 0 0;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.gh-post-upgrade-cta a.gh-btn:hover {
+    opacity: 0.92;
+}</style>
+    <script async src="/public/cards.min.js?v=cdf0390862"></script>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=cdf0390862">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-73VB9DC17E"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-73VB9DC17E');
+</script><style>:root {--ghost-accent-color: #15171A;}</style>
+</head>
+
+<body class="post-template">
+    <div class="gh-site">
+        <header id="gh-head" class="gh-head gh-outer">
+            <div class="gh-head-inner">
+                <div class="gh-head-brand">
+                    <div class="gh-head-brand-wrapper">
+                        <a class="gh-head-logo" href="https://rmeinl.com">
+                                rmeinl
+                        </a>
+
+                        <span class="gh-head-description">/ gene regulatory networks / bioelectricity / longevity / machine learning</span>
+                    </div>
+                    <button class="gh-burger"></button>
+                </div>
+
+                <nav class="gh-head-menu">
+                    <ul class="nav">
+    <li class="nav-home"><a href="https://rmeinl.com/">Home</a></li>
+    <li class="nav-about-me"><a href="https://rmeinl.com/about-me/">About me</a></li>
+    <li class="nav-blog nav-current-parent"><a href="https://rmeinl.com/blog/">Blog</a></li>
+    <li class="nav-recommended"><a href="https://rmeinl.com/recommended/">Recommended</a></li>
+    <li class="nav-projects"><a href="https://rmeinl.com/projects/">Projects</a></li>
+</ul>
+
+                </nav>
+
+            </div>
+        </header>
+
+        
+
+<main id="gh-main" class="gh-main">
+    <article class="gh-article post no-image">
+        <header class="gh-article-header gh-canvas">
+        <div class="gh-article-meta">
+            <time class="gh-article-date" datetime="2021-03-30">Mar 30, 2021</time>
+        </div>
+
+    <h1 class="gh-article-title">The 80/20 Computer Science Degree</h1>
+
+        <p class="gh-article-excerpt">Nand to Tetris was created by two CS professors, Noam Nisan and Shimon Schocken. In a nutshell, you&#x27;ll build your own computer in a bottom-up fashion all the way up from NAND gates. </p>
+</header>
+
+
+<section class="gh-content gh-canvas">
+    <p>DRAFT/DISCLAIMER — This post is a submission to a competition on <a href="http://1729.com/" rel="noopener noreferrer">1729.com</a>. No prizes will be awarded for any submissions at this time. Learn more at <a href="https://1729.com/decentralized-task-creation" rel="noopener noreferrer">1729.com/decentralized-task-creation</a>. </p><p>Nonetheless, I highly recommend everyone who is interested in CS to take this course.</p><figure class="kg-card kg-image-card"><img src="https://rmeinl.com/content/images/2021/03/nand2tetris-1.png" class="kg-image" alt loading="lazy" width="2000" height="1216" srcset="https://rmeinl.com/content/images/size/w600/2021/03/nand2tetris-1.png 600w, https://rmeinl.com/content/images/size/w1000/2021/03/nand2tetris-1.png 1000w, https://rmeinl.com/content/images/size/w1600/2021/03/nand2tetris-1.png 1600w, https://rmeinl.com/content/images/2021/03/nand2tetris-1.png 2000w" sizes="(min-width: 720px) 720px"></figure><p>Listening to podcasts with people in tech, you'll often hear that they got interested in the field because they built their own computers or coded their own games. Elon, for example, sold his first computer game at the age of 12 and built custom computers for others in university. </p><p>Now, that most people have laptops it becomes harder to just open them up, check what's inside and put it back together. Of course you could buy go and buy all the parts separately or get <a href="https://www.playpiper.com/">a DIY kit</a>. Though this might not be logistically feasible for everyone which is a shame because this kind of tinkering is a great learning vehicle for anything related to Computer Science. </p><p>What if you could virtualize the whole experience while being guided by some world-class CS professors? Enter <a href="https://www.nand2tetris.org/">Nand to Tetris</a>.</p><h2 id="a-game-changer-in-cs-education">A game changer in CS education</h2><p>Nand to Tetris was created by two CS professors, <a href="http://www.cs.huji.ac.il/~noam/" rel="noopener">Noam Nisan</a> and <a href="http://www.shimonschocken.com/" rel="noopener">Shimon Schocken</a>. In a nutshell, you'll build your own computer in a bottom-up fashion all the way up from <a href="https://en.wikipedia.org/wiki/NAND_gate#:~:text=In%20digital%20electronics%2C%20a%20NAND,HIGH%20(1)%20output%20results.">NAND gates</a>. <br>In the process, you'll get a hands-on coverage of most of the important ideas and techniques in applied computer science, focusing on computer architecture, compilation, and software engineering, in one course. Nand to Tetris also provides a hands-on overview of key data structures and algorithms, as they unfold in the context of 12 captivating hardware and software development projects.</p><blockquote>Nand to Tetris courses are now taught at 200+ universities and high schools around the world. The students who take them range from high school students to Ph.D. students to Google engineers.</blockquote><h2 id="task-earn-500-in-btc">Task: Earn $500 in BTC</h2><h3 id="complete-all-12-projects-and-submit-a-link-to-the-github-project-repository">Complete all 12 projects and submit a link to the Github project repository</h3><ol><li><a href="https://drive.google.com/file/d/1MY1buFHo_Wx5DPrKhCNSA2cm5ltwFJzM/view">Boolean Logic</a></li><li><a href="https://b1391bd6-da3d-477d-8c01-38cdf774495a.filesusr.com/ugd/56440f_2e6113c60ec34ed0bc2035c9d1313066.pdf">Boolean Arithmetic</a></li><li><a href="https://b1391bd6-da3d-477d-8c01-38cdf774495a.filesusr.com/ugd/56440f_e458602dcb0c4af9aaeb7fdaa34bb2b4.pdf">Sequential Logic</a></li><li><a href="https://b1391bd6-da3d-477d-8c01-38cdf774495a.filesusr.com/ugd/56440f_12f488fe481344328506857e6a799f79.pdf">Machine Language</a></li><li><a href="https://b1391bd6-da3d-477d-8c01-38cdf774495a.filesusr.com/ugd/56440f_96cbb9c6b8b84760a04c369453b62908.pdf">Computer Architecture</a></li><li><a href="https://b1391bd6-da3d-477d-8c01-38cdf774495a.filesusr.com/ugd/56440f_65a2d8eef0ed4e0ea2471030206269b5.pdf">Assembler</a></li><li><a href="https://drive.google.com/file/d/19fe1PeGnggDHymu4LlVY08KmDdhMVRpm/view">Virtual Machine I: Stack Arithmetic</a></li><li><a href="https://drive.google.com/file/d/1lBsaO5XKLkUgrGY6g6vLMsiZo6rWxlYJ/view">Virtual Machine II: Program Control</a></li><li><a href="https://drive.google.com/file/d/1rbHGZV8AK4UalmdJyivgt0fpPiD1Q6Vk/view">High Level Language</a></li><li><a href="https://drive.google.com/file/d/1ujgcS7GoI-zu56FxhfkTAvEgZ6JT7Dxl/view">Compiler I: Syntax Analysis</a></li><li><a href="https://drive.google.com/file/d/1DfGKr0fuJcCvlIPABNSg7fsLfFFqRLex/view">Compiler II: Code Generation</a></li><li><a href="https://drive.google.com/file/d/137PiYjt4CAZ3ROWiD0DJ8XMUbMM0_VHR/view">Operating System</a></li><li>Tetris</li></ol><p>During these 12 projects you will build your own Assembler, Virtual Machine, Java-like High Level Language, Compiler and Operating System. In the optional 13th project you can tie all these things together to write an implementation of Tetris or any other game of your choice using all the components you previously built.</p><p>There is a guided Coursera course with <a href="https://www.coursera.org/learn/build-a-computer">two</a> <a href="https://www.coursera.org/learn/nand2tetris2">parts</a> but just using the links above or the <a href="https://www.amazon.com/Elements-Computing-Systems-Building-Principles/dp/0262640686/ref=ed_oe_p">book</a> works perfectly fine. <a href="https://www.youtube.com/watch?v=wTl5wRDT0CU">Check out the introduction video here</a>. Some inspirational projects can be found <a href="https://www.nand2tetris.org/copy-of-talks">here</a>.</p><!--kg-card-begin: html--><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfZ4OSXgNF7mvOJt4q65xd-g2SeRNIgPqFSpmHYOLBJVpCSSg/viewform?embedded=true" width="640" height="1451" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe><!--kg-card-end: html-->
+</section>
+
+    <footer class="gh-article-footer gh-canvas">
+        <nav class="gh-navigation">
+            <div class="gh-navigation-previous">
+                    <a class="gh-navigation-link u-hover reverse" href="/blog/nand2tetris/">
+                        <span class="u-hover-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor">
+    <path d="M20.547 22.107L14.44 16l6.107-6.12L18.667 8l-8 8 8 8 1.88-1.893z"></path>
+</svg>
+</span>
+                        <span class="u-hover-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor">
+    <path d="M20.547 22.107L14.44 16l6.107-6.12L18.667 8l-8 8 8 8 1.88-1.893z"></path>
+</svg>
+</span>
+                        Previous<span class="gh-navigation-hide">&nbsp;issue</span>
+                    </a>
+            </div>
+
+            <a class="gh-navigation-middle" href="/page/2"><span>Browse</span> all issues</a>
+
+            <div class="gh-navigation-next">
+                    <a class="gh-navigation-link u-hover" href="/blog/setting-up-virtual-flow-on-aws/">
+                        Next<span class="gh-navigation-hide">&nbsp;issue</span>
+                        <span class="u-hover-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor">
+    <path d="M11.453 22.107L17.56 16l-6.107-6.12L13.333 8l8 8-8 8-1.88-1.893z"></path>
+</svg></span>
+                        <span class="u-hover-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor">
+    <path d="M11.453 22.107L17.56 16l-6.107-6.12L13.333 8l8 8-8 8-1.88-1.893z"></path>
+</svg></span>
+                    </a>
+            </div>
+        </nav>
+    </footer>
+    </article>
+</main>
+
+
+
+
+        <footer class="gh-foot gh-outer">
+            <div class="gh-foot-inner gh-inner">
+                <div class="gh-copyright">
+                    rmeinl © 2021
+                </div>
+
+                <nav class="gh-foot-menu">
+                    
+                </nav>
+
+                <div class="gh-powered-by">
+                    <a href="https://ghost.org/" target="_blank" rel="noopener">Powered by Ghost</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+        <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+    <script src="/assets/built/main.min.js?v=cdf0390862"></script>
+
+    
+</body>
+
+</html>

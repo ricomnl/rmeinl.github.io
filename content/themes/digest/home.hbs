@@ -1,11 +1,11 @@
 {{!< default}}
 
 <main class="gh-main gh-canvas">
+    {{#page}}
     <section class="gh-section" style="height: 14em; margin-bottom: 1rem">
-        {{> header-background background=@site.cover_image}}
+        {{> header-background background=feature_image}}
     </section>
 
-    {{#page}}
     <div class="gh-section">
         <h2 "gh-pagehead-title">{{title}}</h2>
         <div class="gh-content">
