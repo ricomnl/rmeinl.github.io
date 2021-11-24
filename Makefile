@@ -3,3 +3,4 @@
 static:
 	rm -rf static/
 	gssg --url "https://rmeinl.com" --dest static
+	cp static/projects/index.html static/
